@@ -1,0 +1,6 @@
+{
+  "name": "멍냥시계", "short_name": "멍냥시계", "description": "강아지·고양이가 사료 알갱이를 밀어 시간을 맞추는 시계",
+  "start_url": "/app", "scope": "/", "display": "standalone", "orientation": "portrait",
+  "background_color": "#f7f6f0", "theme_color": "#74855d", "lang": "ko",
+  "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]
+}

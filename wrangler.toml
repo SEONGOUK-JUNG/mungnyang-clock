@@ -1,0 +1,7 @@
+name = "mungnyang-clock"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[assets]
+directory = "."
+not_found_handling = "404-page"

@@ -19,7 +19,7 @@
 
 ## 지금 서비스 주소
 
-https://mungnyang-clock.koreagwangju.workers.dev
+https://pawminute.com
 
 ## 배포
 

@@ -1319,6 +1319,7 @@ function bodyDetail(p){let s='';if(['curly','fluffy'].includes(p.feature))for(co
       this._lastCheck = this._baseSim;
       this._initialCheck = true;
       this._cleanPastOnce();
+      this._restoreMissed();
     }
 
     now() {
@@ -1467,6 +1468,12 @@ function bodyDetail(p){let s='';if(['curly','fluffy'].includes(p.feature))for(co
       const pending = Array.from(this._pending.values()).find(matches);
       if (pending) {
         this._pending.delete(pending.key);
+        const at = pending.at instanceof Date ? pending.at.getTime() : Number(pending.at);
+        if (Number.isFinite(at) && now - at > 20 * 60 * 1000) {
+          // 한참 지난 뒤에 눌렀다면 지금 가서 먹는 연출 대신 기록만 남긴다.
+          this._recordDone({ ...pending, at: new Date(at) }, now);
+          return true;
+        }
         this._enqueue({ ...pending, confirmed: true, resume: true }, now, true);
         return true;
       }
@@ -1704,6 +1711,18 @@ function bodyDetail(p){let s='';if(['curly','fluffy'].includes(p.feature))for(co
         return at.getTime() >= now - 3000 || this._pending.has(key) || !!(this._active && this._active.key === key) || this._queue.some(e => e.key === key);
       });
       if (notify && original !== this._schedules.length) this.onSchedules(this._schedules.map(s => ({ ...s })));
+    }
+
+    _restoreMissed() {
+      // 오늘 시각이 지났는데 아직 안 한 약속을 미확인 목록에 되살린다.
+      // 미확인은 메모리에만 있어서, 창을 새로 열면 확인 단추가 사라지던 문제를 막는다.
+      const now = this.now().getTime();
+      for (const e of this._eventsWithHistory(this.now())) {
+        const at = e.at instanceof Date ? e.at.getTime() : Number(e.at);
+        if (!Number.isFinite(at) || at > now || now - at > 4 * 60 * 60 * 1000) continue;   // 네 시간 안에 지난 것만
+        if (e.demo || this._isDone(e) || this._contains(e.key)) continue;
+        this._pending.set(e.key, { schedule: e.schedule, at: new Date(at), key: e.key, demo: false, confirmed: false });
+      }
     }
 
     static motion(date, count = 1) {

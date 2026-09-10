@@ -2158,7 +2158,9 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
  }
  // 바탕화면 시계 창은 작고 투명해서 고르는 창을 띄우지 않는다(설정 창에서 고른다)
  const deskWindow=(function(){try{return params.get('desk')==='1';}catch(e){return false;}})();
- if(!allOpen && owned.length===0 && !deskWindow) setTimeout(askStart,600);
+ // 소개 페이지의 아이폰 틀 안에서는 고르는 창 대신 시계가 보이게 둔다
+ const inFrame=(function(){try{return window!==window.top;}catch(e){return true;}})();
+ if(!allOpen && owned.length===0 && !deskWindow && !inFrame) setTimeout(askStart,600);
  else checkReward();
  renderMission();
  mark('#characterGrid','data-char');            // 목록은 이미 그려져 있으므로 지금 자물쇠를 붙인다

@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>멍냥시계 · 사료 알갱이를 미는 반려동물 시계</title>
-<meta name="description" content="강아지·고양이 캐릭터가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞추고, 밥·산책 시간을 챙겨 주는 반려동물 시계. 화상디자인 등록출원 30-2026-0034331.">
-<meta property="og:title" content="멍냥시계">
-<meta property="og:description" content="사료 알갱이를 한 알씩 미는 반려동물 시계. 휴대폰에서도, PC 바탕화면에서도.">
+<title>PawMinute・ごはん粒の分針を押すペット時計</title>
+<meta name="description" content="いぬとねこのキャラクターが、ごはん粒でできた分針を一粒ずつ押して時刻を合わせ、ごはんと散歩の時間を知らせるペット時計。画像デザイン出願 30-2026-0034331。">
+<meta property="og:title" content="PawMinute">
+<meta property="og:description" content="ごはん粒を一粒ずつ押すペット時計。スマホでも、パソコンのデスクトップでも。">
 <meta property="og:type" content="website">
 <link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/icons/icon-180.png"><link rel="icon" href="/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<script>/* 홈 화면에 설치해서 연 경우에만 앱으로 바로 */
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+JP:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>/* 홈 화면에 インストール해서 연 경우에만 アプリ으로 바로 */
 if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) location.replace('/app' + location.search);
 (function(){ try{
   if (location.pathname !== '/') return;
@@ -27,7 +27,7 @@ if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) lo
   --ink:#f3f0e4; --muted:#a4ac99; --dim:#7d8574;
   --kibble:#e2a445; --sage:#a8bb8b; --rust:#c9784f;
   --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --sans:"IBM Plex Sans JP","Yu Gothic","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --mono:"IBM Plex Mono",Consolas,monospace;
 }
 *{box-sizing:border-box}
@@ -91,7 +91,7 @@ section{padding:64px 0}
 .sec-head p{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:34em}
 .rule{border:0;border-top:1px solid var(--line);margin:0}
 
-/* 기능 */
+/* できること */
 .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .feat > div{background:var(--bg2);padding:22px 20px 24px;display:flex;flex-direction:column;gap:6px}
 .feat .no{font-family:var(--mono);font-size:11px;color:var(--kibble)}
@@ -100,7 +100,7 @@ section{padding:64px 0}
 @media (max-width:880px){.feat{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.feat{grid-template-columns:1fr}}
 
-/* 바탕화면 */
+/* デスクトップ */
 .desk-sec .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
 .win{background:linear-gradient(160deg,#2c3a45,#1d262c);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px #000}
 .win-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#161c20;border-bottom:1px solid #2b343a}
@@ -115,7 +115,7 @@ section{padding:64px 0}
 .desk-list b{color:var(--ink);font-weight:600}
 @media (max-width:880px){.desk-sec .wrap{grid-template-columns:1fr;gap:30px}}
 
-/* 값 */
+/* 料金 */
 .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .plan{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
 .plan.lead{border-color:var(--kibble)}
@@ -158,13 +158,13 @@ footer a:hover{color:var(--ink)}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="/"><img src="/icons/icon-192.png" alt=""><b>멍냥시계</b></a>
+    <a class="logo" href="/"><img src="/icons/icon-192.png" alt=""><b>PawMinute</b></a>
     <nav>
-      <a href="#features">기능</a>
-      <a href="#desktop">바탕화면</a>
-      <a href="#price">값</a>
+      <a href="#features">できること</a>
+      <a href="#desktop">デスクトップ</a>
+      <a href="#price">料金</a>
       <span class="langpick"><a href="/" data-lang="ko">한국어</a><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a></span>
-      <a class="btn small" href="/app">앱 열어 보기</a>
+      <a class="btn small" href="/ja/app">アプリを開く</a>
     </nav>
   </div>
 </header>
@@ -173,20 +173,20 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div>
       <p class="eyebrow">LITTLE PAWS, LOVELY DAYS</p>
-      <h1>사료 알갱이를 한 알씩 미는<br><mark>반려동물 시계</mark></h1>
-      <p class="lede">강아지와 고양이가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞춥니다.
-        밥때가 되면 그릇 앞에서 기다리고, 산책 시간에는 문 앞에서 기다립니다.
-        휴대폰에서도, PC 바탕화면에서도 같은 아이가 함께 삽니다.</p>
+      <h1>ごはん粒を一粒ずつ押す<br><mark>ペット時計</mark></h1>
+      <p class="lede">いぬとねこが、ごはん粒でできた分針を一粒ずつ押して時刻を合わせます。
+        ごはんの時間には器の前で、散歩の時間には扉の前で待っています。
+        スマホでも、パソコンのデスクトップでも、同じ子がいっしょに暮らします。</p>
       <div class="hero-cta">
-        <a class="btn" href="/app">앱 열어 보기</a>
-        <button class="btn ghost" type="button" data-open="deskSheet">PC 바탕화면 시계 받기</button>
+        <a class="btn" href="/ja/app">アプリを開く</a>
+        <button class="btn ghost" type="button" data-open="deskSheet">デスクトップ時計を受け取る</button>
       </div>
       <div class="chips">
-        <span>캐릭터 79종</span><span>사료 분침 8알</span><span>밥·산책 알림</span>
-        <span>함께 밀기 넷까지</span><span>기기 안에만 저장</span><span>디자인 출원 30-2026-0034331</span>
+        <span>キャラクター79種</span><span>ごはん粒8つの分針</span><span>ごはんと散歩の知らせ</span>
+        <span>4匹までいっしょに</span><span>端末の中だけに保存</span><span>デザイン出願 30-2026-0034331</span>
       </div>
     </div>
-    <div class="phone"><div class="screen"><div class="island"></div><iframe src="/app?char=corgi" title="멍냥시계 앱 화면" loading="eager"></iframe><div class="bar"></div></div></div>
+    <div class="phone"><div class="screen"><div class="island"></div><iframe src="/ja/app?char=corgi" title="PawMinuteのアプリ画面" loading="eager"></iframe><div class="bar"></div></div></div>
   </div>
 </div>
 
@@ -195,28 +195,28 @@ footer a:hover{color:var(--ink)}
 <section id="features">
   <div class="wrap">
     <div class="sec-head">
-      <h2>멍냥시계가 하는 일</h2>
-      <p>시간을 보여 주는 일보다, 오늘 아이와 무엇을 했는지 챙기는 일을 더 많이 합니다.</p>
+      <h2>PawMinuteがすること</h2>
+      <p>時刻を映すことよりも、今日その子と何をしたかを見守ることに時間を使います。</p>
     </div>
     <div class="feat">
-      <div><span class="no">01</span><b>한 알씩 미는 분침</b><p>분침이 사료 알갱이 여덟 알입니다. 1분이 지날 때마다 걸어가 한 알을 밀어 놓습니다.</p></div>
-      <div><span class="no">02</span><b>캐릭터 79종</b><p>강아지와 고양이 품종, 그림 멍냥이, 기타 친구들. 처음에는 코기와 벵갈 중 하나로 시작합니다.</p></div>
-      <div><span class="no">03</span><b>넷이 함께 밀기</b><p>친구를 넷까지 불러 함께 밀 수 있습니다. 각자 이름을 붙여 줄 수 있어요.</p></div>
-      <div><span class="no">04</span><b>밥때를 압니다</b><p>정한 시각이 되면 그릇 앞으로 걸어가 기다립니다. 다 주고 나면 밥 줬어요를 눌러 주세요.</p></div>
-      <div><span class="no">05</span><b>산책 타이머</b><p>다녀오기 전에 시작을 누르고, 돌아와 끝을 누르면 오늘 기록에 남습니다.</p></div>
-      <div><span class="no">06</span><b>고양이는 놀아주기</b><p>대표 아이가 고양이면 산책 대신 놀아주기로 바뀝니다. 기록도 함께 놀기로 세요.</p></div>
-      <div><span class="no">07</span><b>쓰다듬기</b><p>캐릭터 위에서 손을 문지르면 하트가 올라오고 고롱고롱거립니다.</p></div>
-      <div><span class="no">08</span><b>밤에는 잠자기</b><p>밤 10시부터 아침 7시까지는 시계판 아래에서 웅크리고 잡니다.</p></div>
-      <div><span class="no">09</span><b>시계가 머무는 곳</b><p>러그, 잔디, 나무, 미니멀, 밤. 다섯 가지 시계판 중에 고릅니다.</p></div>
-      <div><span class="no">10</span><b>어두운 화면</b><p>밝은 화면과 어두운 화면을 오갑니다. 밤에 눈이 부시지 않게.</p></div>
-      <div><span class="no">11</span><b>우리 아이 정보</b><p>이름, 생일, 사진을 넣어 둡니다. 생일에는 고깔을 씁니다.</p></div>
-      <div><span class="no">12</span><b>주간 기록</b><p>이번 주 밥과 산책을 며칠이나 지켰는지 한눈에 보여 줍니다.</p></div>
-      <div><span class="no">13</span><b>PC 바탕화면 시계</b><p>윈도우 바탕화면 위에 떠서 같은 아이가 시간을 맞춥니다. 원 바깥은 마우스가 통과합니다.</p></div>
-      <div><span class="no">14</span><b>크기 조절</b><p>바탕화면 시계는 손잡이를 끌거나 휠을 굴려 크기를 바꿉니다.</p></div>
-      <div><span class="no">15</span><b>방해 금지</b><p>전체 화면으로 영상을 보면 시계가 저절로 흐려지고 뒤로 물러납니다.</p></div>
-      <div><span class="no">16</span><b>쉬는 시간 알림</b><p>물 마시기와 스트레칭을 정한 간격마다 알려 줍니다. 아이도 챙기고 주인도 챙깁니다.</p></div>
-      <div><span class="no">17</span><b>홈 화면에 추가</b><p>휴대폰 브라우저에서 홈 화면에 추가하면 발바닥 아이콘으로 앱처럼 열립니다.</p></div>
-      <div><span class="no">18</span><b>기기 안에만 저장</b><p>계정이 없습니다. 일정과 기록은 이 기기 안에만 남고 어디로도 보내지 않습니다.</p></div>
+      <div><span class="no">01</span><b>一粒ずつ押す分針</b><p>分針はごはん粒が8つ。1分たつごとに歩いていって一粒を押します。</p></div>
+      <div><span class="no">02</span><b>キャラクター79種</b><p>いぬとねこの品種、描き下ろしの子、そのほかの仲間。はじめはコーギーかベンガルのどちらかで始めます。</p></div>
+      <div><span class="no">03</span><b>四匹でいっしょに押す</b><p>仲間は4匹まで呼んでいっしょに押せます。それぞれに名前をつけられます。</p></div>
+      <div><span class="no">04</span><b>ごはんの時間がわかります</b><p>決めた時刻になると器の前へ歩いて待ちます。あげ終えたら「ごはんをあげました」を押してください。</p></div>
+      <div><span class="no">05</span><b>散歩タイマー</b><p>出かける前に「はじめる」、戻って「おわり」を押すと、今日の記録に残ります。</p></div>
+      <div><span class="no">06</span><b>ねこは遊びで</b><p>その子がねこなら、散歩ではなく遊びに変わります。記録も遊びで数えます。</p></div>
+      <div><span class="no">07</span><b>なでる</b><p>キャラクターの上で手をこすると、ハートが浮かんでごろごろ鳴きます。</p></div>
+      <div><span class="no">08</span><b>夜はおやすみ</b><p>夜10時から朝7時までは、文字盤の下で丸くなって眠ります。</p></div>
+      <div><span class="no">09</span><b>時計のいる場所</b><p>ラグ、芝生、木、ミニマル、夜。5つの文字盤から選べます。</p></div>
+      <div><span class="no">10</span><b>暗い画面</b><p>明るい画面と暗い画面を行き来します。夜にまぶしくないように。</p></div>
+      <div><span class="no">11</span><b>うちの子のこと</b><p>名前、誕生日、写真を入れておけます。誕生日には三角帽子をかぶります。</p></div>
+      <div><span class="no">12</span><b>週の記録</b><p>今週、ごはんと散歩を何日守れたかがひと目でわかります。</p></div>
+      <div><span class="no">13</span><b>デスクトップ時計</b><p>Windowsのデスクトップに浮かんで、同じ子が時刻を合わせます。円の外はマウスがすり抜けます。</p></div>
+      <div><span class="no">14</span><b>大きさを変える</b><p>デスクトップ時計は、つまみを引くかホイールを回して大きさを変えます。</p></div>
+      <div><span class="no">15</span><b>おじゃま防止</b><p>全画面で動画を見ると、時計はひとりでに薄くなって後ろへ下がります。</p></div>
+      <div><span class="no">16</span><b>休憩の知らせ</b><p>水を飲むことと伸びをすることを、決めた間隔で知らせます。その子も飼い主さんも見守ります。</p></div>
+      <div><span class="no">17</span><b>ホーム画面に追加</b><p>スマホのブラウザでホーム画面に追加すると、肉球のアイコンからアプリのように開きます。</p></div>
+      <div><span class="no">18</span><b>端末の中だけに保存</b><p>アカウントはありません。予定と記録はこの端末の中にだけ残り、どこにも送りません。</p></div>
     </div>
   </div>
 </section>
@@ -227,22 +227,22 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div>
       <div class="sec-head">
-        <h2>바탕화면에도 삽니다</h2>
-        <p>윈도우용 시계를 따로 만들었습니다. 창 테두리 없이 바탕화면 위에 떠 있고,
-          시계 원 바깥은 마우스가 통과해 하던 일을 그대로 할 수 있습니다.</p>
+        <h2>デスクトップにも住みます</h2>
+        <p>Windows用の時計を別に作りました。枠のない姿でデスクトップに浮かび、
+          円の外はマウスがすり抜けるので、作業のじゃまになりません。</p>
       </div>
       <ul class="desk-list">
-        <li><b>끌기</b><span>원하는 자리에 놓으면 그 자리를 기억합니다.</span></li>
-        <li><b>크기</b><span>마우스를 올리면 나오는 손잡이를 끌거나 휠을 굴립니다.</span></li>
-        <li><b>두 번 누르기</b><span>일정·꾸미기·기록 창이 열립니다. 휴대폰 앱과 같은 화면입니다.</span></li>
-        <li><b>알림</b><span>밥·산책 시간에 윈도우 알림이 뜹니다.</span></li>
+        <li><b>動かす</b><span>好きな場所に置くと、その場所を覚えます。</span></li>
+        <li><b>大きさ</b><span>マウスを乗せると出るつまみを引くか、ホイールを回します。</span></li>
+        <li><b>ダブルクリック</b><span>予定・きせかえ・記録の画面が開きます。スマホのアプリと同じ画面です。</span></li>
+        <li><b>通知</b><span>ごはんと散歩の時間にWindowsの通知が出ます。</span></li>
       </ul>
-      <div class="hero-cta"><button class="btn" type="button" data-open="deskSheet">받는 법 보기</button></div>
+      <div class="hero-cta"><button class="btn" type="button" data-open="deskSheet">受け取り方を見る</button></div>
     </div>
     <div class="win">
       <div class="win-bar"><i></i><i></i><i></i><span>~/desktop</span></div>
-      <div class="win-body"><img src="/desk-clock.png" alt="바탕화면 위에 떠 있는 멍냥시계" width="190" height="190">
-        <span class="win-note">윈도우 10 · 11</span></div>
+      <div class="win-body"><img src="/desk-clock.png" alt="デスクトップに浮かぶPawMinute" width="190" height="190">
+        <span class="win-note">Windows 10・11</span></div>
     </div>
   </div>
 </section>
@@ -252,38 +252,38 @@ footer a:hover{color:var(--ink)}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <h2>값</h2>
-      <p>시작은 무료입니다. 아이와 보낸 시간으로 친구를 데려올 수도 있고, 사서 데려올 수도 있습니다.</p>
+      <h2>料金</h2>
+      <p>はじめるのは無料です。その子と過ごした時間で仲間を迎えることも、買って迎えることもできます。</p>
     </div>
     <div class="plans">
       <div class="plan lead">
         <span class="tag">START</span>
-        <div class="price">무료</div>
-        <p>코기와 벵갈 중 한 친구를 골라 시작합니다. 시계와 일정, 기록은 전부 그대로 씁니다.</p>
-        <a class="btn" href="/app">지금 시작하기</a>
+        <div class="price">無料</div>
+        <p>コーギーかベンガルのどちらかを選んで始めます。時計も予定も記録も、すべてそのまま使えます。</p>
+        <a class="btn" href="/ja/app">いますぐはじめる</a>
       </div>
       <div class="plan">
         <span class="tag">ONE</span>
-        <div class="price">US$4.99 <small>/ 한 친구</small></div>
-        <p>마음에 드는 친구를 하나 골라 데려옵니다. 한 번 데려오면 계속 함께합니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="price">US$4.99 <small>／1匹</small></div>
+        <p>気に入った仲間を一匹選んで迎えます。一度迎えたら、ずっといっしょです。</p>
+        <button class="btn ghost" type="button" disabled>支払いは準備中</button>
       </div>
       <div class="plan">
         <span class="tag">ALL</span>
-        <div class="price">US$49.99 <small>/ 전부</small></div>
-        <p>79종 전부를 엽니다. 앞으로 더해지는 친구들도 함께 열립니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="price">US$49.99 <small>／すべて</small></div>
+        <p>79種すべてを開きます。これから増える仲間もいっしょに開きます。</p>
+        <button class="btn ghost" type="button" disabled>支払いは準備中</button>
       </div>
       <div class="plan">
         <span class="tag">CUSTOM</span>
-        <div class="price">US$99 <small>/ 우리 아이</small></div>
-        <p>우리 아이 사진을 보내 주시면 그 아이를 캐릭터로 만들어 넣어 드립니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="price">US$99 <small>／うちの子</small></div>
+        <p>うちの子の写真をお送りいただければ、その子をキャラクターにしてお入れします。</p>
+        <button class="btn ghost" type="button" disabled>支払いは準備中</button>
       </div>
     </div>
     <div class="mission">
-      <b>사지 않고 얻는 길</b>
-      <span>하루 <em>30분</em> 이상 산책하거나 놀아 주기를 <em>7일 연속</em> 하면, 새 친구 교환권을 한 장 받습니다.</span>
+      <b>買わずに手に入れる道</b>
+      <span>1日 <em>30分</em> 以上の散歩か遊びを <em>7日連続</em> 続けると、新しい仲間の引換券が1枚もらえます。</span>
     </div>
   </div>
 </section>
@@ -293,8 +293,8 @@ footer a:hover{color:var(--ink)}
 <section>
   <div class="wrap">
     <div class="notice">
-      <b>화상디자인 등록출원 30-2026-0034331</b>
-      <p>사료 알갱이가 분침이 되고 반려동물이 그것을 미는 이 시계의 화상디자인은 2026년 9월 8일 대한민국 지식재산처에 출원되었습니다. 무단 복제와 모방을 금지합니다.</p>
+      <b>画像デザイン出願 30-2026-0034331</b>
+      <p>ごはん粒が分針になり、ペットがそれを押すこの時計の画像デザインは、2026年9月8日に韓国特許庁へ出願しました。無断の複製と模倣を禁じます。</p>
     </div>
   </div>
 </section>
@@ -302,57 +302,57 @@ footer a:hover{color:var(--ink)}
 <footer>
   <div class="wrap">
     <div>
-      <a href="/app">앱 열어 보기</a>
-      <a href="/privacy">개인정보처리방침</a>
-      <a href="/support">지원</a>
-      <a href="#" data-open="howtoSheet">홈 화면에 추가</a>
+      <a href="/ja/app">アプリを開く</a>
+      <a href="/privacy">プライバシーポリシー</a>
+      <a href="/support">サポート</a>
+      <a href="#" data-open="howtoSheet">ホーム画面に追加</a>
     </div>
-    <div>© 2026 정성욱 · 멍냥시계</div>
+    <div>© 2026 チョン・ソンウク・PawMinute</div>
   </div>
 </footer>
 
 <div class="sheet" id="deskSheet">
   <div class="card">
-    <h3>PC 바탕화면 시계</h3>
-    <p class="note">윈도우 10 · 11 (64비트) · 약 110MB</p>
-    <a class="btn" id="deskGet" href="#" style="width:100%;margin-bottom:16px">내려받는 곳 준비 중</a>
-    <h4>설치</h4>
+    <h3>デスクトップ時計</h3>
+    <p class="note">Windows 10・11（64ビット）・約110MB</p>
+    <a class="btn" id="deskGet" href="#" style="width:100%;margin-bottom:16px">配布ページを準備中</a>
+    <h4>インストール</h4>
     <ol>
-      <li><b>받은 파일을 두 번 누릅니다.</b></li>
-      <li><b>파란 창이 뜨면 추가 정보 → 실행.</b> 처음 보는 프로그램이라 뜨는 창입니다. 작은 글씨의 추가 정보를 눌러야 실행 단추가 나옵니다.</li>
-      <li><b>설치 위치는 그대로 두고 설치.</b> 관리자 권한이 필요 없습니다.</li>
-      <li><b>화면 오른쪽 아래에 시계가 나타납니다.</b> 작업 표시줄 오른쪽에 발바닥 아이콘도 생깁니다.</li>
+      <li><b>受け取ったファイルをダブルクリックします。</b></li>
+      <li><b>青い画面が出たら「詳細情報」→「実行」。</b> はじめて見るプログラムなので出る画面です。小さな文字の「詳細情報」を押すと「実行」が現れます。</li>
+      <li><b>インストール先はそのままで「インストール」。</b> 管理者の権限はいりません。</li>
+      <li><b>画面の右下に時計が現れます。</b> タスクバーの右側に肉球のアイコンも現れます。</li>
     </ol>
-    <h4>쓰는 법</h4>
+    <h4>使い方</h4>
     <ol>
-      <li>끌어서 옮깁니다. 위치는 기억됩니다.</li>
-      <li>마우스를 올리면 나오는 손잡이를 끌거나 휠을 굴려 크기를 바꿉니다.</li>
-      <li>멍냥이 위에서 문지르면 하트가 올라옵니다.</li>
-      <li>두 번 누르면 일정·꾸미기·기록 창이 열립니다.</li>
-      <li>전체 화면으로 영상을 보면 시계가 저절로 물러납니다.</li>
+      <li>引いて動かせます。位置は覚えています。</li>
+      <li>マウスを乗せると出るつまみを引くか、ホイールを回して大きさを変えます。</li>
+      <li>その子をなでるとハートが浮かびます。</li>
+      <li>ダブルクリックすると、予定・きせかえ・記録の画面が開きます。</li>
+      <li>全画面で動画を見ると、時計はひとりでに下がります。</li>
     </ol>
-    <button class="btn ghost close" type="button" data-close>알겠어요</button>
+    <button class="btn ghost close" type="button" data-close>わかりました</button>
   </div>
 </div>
 
 <div class="sheet" id="howtoSheet">
   <div class="card">
-    <h3>홈 화면에 추가하기</h3>
-    <h4>아이폰 · 아이패드 (사파리)</h4>
-    <ol><li>아래 가운데 <b>공유 버튼</b>(위로 향한 화살표)</li><li>목록을 내려 <b>홈 화면에 추가</b></li><li>오른쪽 위 <b>추가</b></li></ol>
-    <h4>안드로이드 (크롬)</h4>
-    <ol><li>오른쪽 위 <b>⋮</b></li><li><b>홈 화면에 추가</b> 또는 <b>앱 설치</b></li><li><b>설치</b></li></ol>
-    <h4>PC (크롬 · 엣지)</h4>
-    <ol><li>주소창 오른쪽 끝 <b>설치 아이콘</b></li><li>없으면 <b>⋮</b> → <b>앱</b> → <b>이 사이트를 앱으로 설치</b></li></ol>
-    <button class="btn ghost close" type="button" data-close>알겠어요</button>
+    <h3>ホーム画面に追加する</h3>
+    <h4>iPhone・iPad（Safari）</h4>
+    <ol><li>下の中央の <b>共有ボタン</b>（上向きの矢印）</li><li>一覧を下にたどって <b>ホーム画面に追加</b></li><li>右上の <b>追加</b></li></ol>
+    <h4>Android（Chrome）</h4>
+    <ol><li>右上の <b>⋮</b></li><li><b>ホーム画面に追加</b> または <b>アプリをインストール</b></li><li><b>インストール</b></li></ol>
+    <h4>パソコン（Chrome・Edge）</h4>
+    <ol><li>アドレスバーの右端の <b>インストールのアイコン</b></li><li>見あたらないときは <b>⋮</b> → <b>アプリ</b> → <b>このサイトをアプリとしてインストール</b></li></ol>
+    <button class="btn ghost close" type="button" data-close>わかりました</button>
   </div>
 </div>
 
 <script>
 (function(){
-  var URL_DESK = '';   // 내려받기 주소가 정해지면 여기에
+  var URL_DESK = '';   // ダウンロード 주소가 정해지면 여기에
   var get = document.getElementById('deskGet');
-  if (URL_DESK) { get.href = URL_DESK; get.textContent = '내려받기'; }
+  if (URL_DESK) { get.href = URL_DESK; get.textContent = 'ダウンロード'; }
   else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }
 
   var here = location.pathname.indexOf('/ja') === 0 ? 'ja' : location.pathname.indexOf('/en') === 0 ? 'en' : 'ko';

@@ -19,6 +19,23 @@ if (innerWidth <= 760 || matchMedia('(display-mode: standalone)').matches || nav
   .intro p{font-size:15px;line-height:1.7;color:#4a4458;margin:0 0 14px}
   .intro .tip{font-size:13px;color:#6b6478;border-left:3px solid #74855d;padding:4px 12px;margin-top:20px}
   .intro .links{margin-top:22px;font-size:13px}.intro .links a{color:#74855d;margin-right:14px}
+  .intro .tip button{font:inherit;font-size:12px;margin-top:6px;padding:6px 12px;border-radius:999px;border:1px solid #74855d;background:#fff;color:#4c5a3c;cursor:pointer}
+  .deskCard{border-color:#74855d}.deskCard b{display:block;font-size:13px;color:#2b2438}
+  .deskCard p{font-size:12px;margin:4px 0 8px;line-height:1.6}
+  #desk{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(20,18,26,.5);z-index:50;padding:20px}
+  #desk .card{background:#fff;border-radius:20px;max-width:400px;width:100%;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);max-height:86vh;overflow:auto}
+  #desk h3{margin:0 0 4px;font-size:18px}#desk h4{margin:16px 0 6px;font-size:13px;color:#74855d}
+  #desk .deskNote{font-size:11px;color:#6b6478;margin:0 0 12px}
+  #desk .deskGet{display:block;text-align:center;text-decoration:none;padding:11px;border-radius:12px;background:#dfded7;color:#6b6478;font-size:14px;margin-bottom:16px}
+  #desk .deskGet.on{background:#74855d;color:#fff}
+  #desk ol{margin:0;padding-left:18px;font-size:13.5px;line-height:1.75;color:#4a4458}
+  #desk ol span{font-size:12px;color:#6b6478}
+  #desk .close{margin-top:16px;width:100%;padding:10px;border-radius:12px;border:0;background:#74855d;color:#fff;font:inherit;cursor:pointer}
+  #howto{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(20,18,26,.5);z-index:50;padding:20px}
+  #howto .card{background:#fff;border-radius:20px;max-width:360px;width:100%;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+  #howto h3{margin:0 0 6px;font-size:18px}#howto h4{margin:14px 0 4px;font-size:13px;color:#74855d}
+  #howto ol{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;color:#4a4458}
+  #howto .close{margin-top:16px;width:100%;padding:10px;border-radius:12px;border:0;background:#74855d;color:#fff;font:inherit;cursor:pointer}
   .phone{position:relative;width:402px;height:874px;background:#111;border-radius:60px;padding:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.55),0 0 0 2px #3a3a3a,0 0 0 6px #1b1b1b;flex:none}
   .phone::before{content:"";position:absolute;left:-4px;top:150px;width:4px;height:36px;background:#2a2a2a;border-radius:2px 0 0 2px;box-shadow:0 60px 0 #2a2a2a,0 130px 0 #2a2a2a}
   .phone::after{content:"";position:absolute;right:-4px;top:210px;width:4px;height:80px;background:#2a2a2a;border-radius:0 2px 2px 0}
@@ -36,9 +53,41 @@ if (innerWidth <= 760 || matchMedia('(display-mode: standalone)').matches || nav
     <p>강아지·고양이 캐릭터가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞추고, 밥·산책 시간을 챙겨 주는 반려동물 시계입니다.</p>
     <p>오른쪽 화면이 실제 앱과 같습니다. 휴대폰에서 이 주소를 열면 틀 없이 앱 화면이 바로 나옵니다.</p>
     <p class="tip" style="border-color:#c9642a">이 시계의 화상디자인은 대한민국 지식재산처에 <b>디자인등록출원</b> 중입니다(출원번호 30-2026-0034331, 2026년 9월 8일). 무단 복제·모방을 금지합니다.</p>
-    <div class="tip">휴대폰 브라우저에서 "홈 화면에 추가"를 하면 발바닥 아이콘으로 설치돼 앱처럼 실행됩니다.</div>
+    <div class="tip">휴대폰이나 PC에 설치하면 발바닥 아이콘으로 앱처럼 열립니다. <button id="howtoBtn" type="button">설치하는 방법</button></div>
+    <div class="tip deskCard"><b>PC 바탕화면에도 둘 수 있어요</b>
+      <p>같은 멍냥이가 윈도우 바탕화면 위에 살면서 시간을 맞추고 밥·산책을 알려 줍니다.</p>
+      <button id="deskBtn" type="button">받는 법 보기</button></div>
     <div class="links"><a href="/app">앱 화면만 크게 보기</a><a href="/privacy">개인정보처리방침</a><a href="/support">지원</a></div>
   </div>
   <div class="phone"><div class="screen"><div class="island"></div><iframe src="/app" title="멍냥시계 앱 화면" allow="clipboard-write"></iframe><div class="bar"></div></div></div>
+<div id="desk"><div class="card"><h3>PC 바탕화면 시계</h3>
+    <p class="deskNote">윈도우 10 · 11 (64비트) · 약 110MB</p>
+    <a class="deskGet" id="deskGet" href="#">내려받는 곳 준비 중</a>
+    <ol><li><b>받은 파일을 두 번 누릅니다.</b></li>
+    <li><b>파란 창이 뜨면 추가 정보 → 실행.</b><br><span>처음 보는 프로그램이라 뜨는 창입니다. 작은 글씨의 추가 정보를 눌러야 실행 단추가 나옵니다.</span></li>
+    <li><b>설치 위치는 그대로 두고 설치.</b><br><span>관리자 권한이 필요 없습니다.</span></li>
+    <li><b>화면 오른쪽 아래에 시계가 나타납니다.</b><br><span>작업 표시줄 오른쪽에 발바닥 아이콘도 생깁니다.</span></li></ol>
+    <h4>바탕화면에서 쓰는 법</h4>
+    <ol><li>시계를 끌어서 옮깁니다. 위치는 기억됩니다.</li>
+    <li>마우스를 올리면 오른쪽 아래에 손잡이가 나옵니다. 끌거나 휠을 굴려 크기를 바꿉니다.</li>
+    <li>멍냥이 위에서 문지르면 하트가 올라옵니다.</li>
+    <li>두 번 누르면 일정·꾸미기·기록 창이 열립니다.</li>
+    <li>전체 화면으로 영상을 보면 시계가 저절로 물러납니다.</li></ol>
+    <button class="close" id="deskClose">알겠어요</button></div></div>
+  <div id="howto"><div class="card"><h3>홈 화면에 추가하기</h3>
+    <h4>아이폰 · 아이패드 (사파리)</h4><ol><li>아래 가운데 <b>공유 버튼</b>(위로 향한 화살표)</li><li>목록을 내려 <b>홈 화면에 추가</b></li><li>오른쪽 위 <b>추가</b></li></ol>
+    <h4>안드로이드 (크롬)</h4><ol><li>오른쪽 위 <b>⋮</b></li><li><b>홈 화면에 추가</b> 또는 <b>앱 설치</b></li><li><b>설치</b></li></ol>
+    <h4>PC (크롬 · 엣지)</h4><ol><li>주소창 오른쪽 끝 <b>설치 아이콘</b></li><li>없으면 <b>⋮</b> → <b>앱</b> → <b>이 사이트를 앱으로 설치</b></li></ol>
+    <button class="close" id="howtoClose">알겠어요</button></div></div>
+  <script>(function(){var URL_DESK='';var d=document.getElementById('desk'),g=document.getElementById('deskGet');
+    if(URL_DESK){g.href=URL_DESK;g.textContent='내려받기';g.className='deskGet on';}
+    else{g.onclick=function(e){e.preventDefault();};}
+    document.getElementById('deskBtn').onclick=function(){d.style.display='flex';};
+    document.getElementById('deskClose').onclick=function(){d.style.display='none';};
+    d.onclick=function(e){if(e.target===d)d.style.display='none';};})();</script>
+  <script>(function(){var d=document.getElementById('howto');
+    document.getElementById('howtoBtn').onclick=function(){d.style.display='flex';};
+    document.getElementById('howtoClose').onclick=function(){d.style.display='none';};
+    d.onclick=function(e){if(e.target===d)d.style.display='none';};})();</script>
 </body>
 </html>

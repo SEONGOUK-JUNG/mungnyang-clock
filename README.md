@@ -1,11 +1,43 @@
-# 멍냥시계 (Mungnyang Clock)
+# 멍냥시계 웹 (Mungnyang Clock)
 
-강아지·고양이 캐릭터가 사료 알갱이 분침을 한 알씩 밀어 시간을 맞추고, 밥·산책 시간을 챙겨 주는 반려동물 시계.
-화상디자인 등록출원 30-2026-0034331 (2026-09-08, 정성욱). 무단 복제·모방 금지.
+강아지·고양이 캐릭터가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞추고,
+밥·산책 시간을 챙겨 주는 반려동물 시계입니다.
 
-- `index.html` — PC용 소개 페이지 (아이폰 틀 안에 앱 표시), 좁은 화면은 `/app` 으로 이동
-- `app.html` — 앱 본체 (단일 파일, 서버 없음)
-- `privacy.html`, `support.html`, `manifest.json`, `icons/`
-- 배포: Cloudflare Workers 정적 자산 → https://mungnyang-clock.koreagwangju.workers.dev  (`wrangler deploy`)
+화상디자인 등록출원 **30-2026-0034331** (2026-09-08, 정성욱). 무단 복제·모방을 금지합니다.
 
-원본 생성 스크립트는 `Desktop\멍냥시계\build_merged.py` (별도 보관).
+## 이 저장소에 든 것
+
+| 파일 | 무엇 |
+|---|---|
+| `index.html` | PC 소개 페이지. 아이폰 틀 안에서 앱이 실제로 돌아갑니다. |
+| `app.html` | 앱 화면 한 파일. 서버 없이 이 파일 하나로 동작합니다. |
+| `manifest.json`, `icons/` | 홈 화면에 추가할 때 쓰는 아이콘과 설정 |
+| `privacy.html`, `support.html` | 앱스토어 심사용 정책·지원 페이지 |
+| `wrangler.toml` | Cloudflare Workers 배포 설정 |
+
+휴대폰이나 홈 화면 앱으로 열면 `index.html` 이 `/app` 으로 보내 앱 화면이 바로 나옵니다.
+
+## 지금 서비스 주소
+
+https://mungnyang-clock.koreagwangju.workers.dev
+
+## 배포
+
+```
+npx wrangler deploy --config wrangler.toml --name mungnyang-clock
+```
+
+`app.html` 은 손으로 고치지 않습니다. 빌드 스크립트(`build_merged.py`)가 만들어 낸 결과물이며,
+고칠 곳은 빌드 쪽 `merge/` 조각들입니다.
+
+## 담긴 기능
+
+- 캐릭터 79종. 처음에는 코기·벵갈 중 한 마리로 시작하고, 나머지는 잠겨 있습니다.
+- 하루 30분 이상 산책·놀아주기를 7일 연속 하면 교환권 한 장으로 한 마리를 데려옵니다.
+- 밥·산책·놀이 일정 알림, 오늘 기록과 주간 요약.
+- 캐릭터를 문지르면 하트가 올라옵니다.
+- PC 바탕화면용 시계(윈도우)도 있습니다. 앱 화면 MY 탭에서 받는 법을 볼 수 있습니다.
+
+## 저장되는 곳
+
+일정·기록·설정은 브라우저의 로컬 저장소(`mn.*`)에만 남습니다. 서버로 보내지 않습니다.

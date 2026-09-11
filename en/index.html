@@ -32,7 +32,7 @@ if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) lo
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
@@ -58,14 +58,24 @@ a{color:inherit}
 .btn.ghost:hover{border-color:var(--sage);color:var(--sage)}
 .btn.small{padding:8px 15px;font-size:13px}
 .btn[disabled]{background:var(--card);color:var(--dim);cursor:default;border-color:var(--line)}
-@media (max-width:720px){.top nav a:not(.btn){display:none}}
+@media (max-width:720px){
+  .top nav > a:not(.btn){display:none}
+  .top .wrap{gap:8px}
+  .langpick a{padding:4px 7px;font-size:10px}
+  .btn.small{padding:8px 12px;font-size:12.5px}
+}
+.logo b, .langpick a, .btn{white-space:nowrap}
+@media (max-width:480px){
+  .logo b{display:none}          /* 이름은 첫 화면 제목에 크게 나오므로 머리에서는 마크만 */
+  .wrap{padding:0 18px}
+}
 
 /* 첫 화면 */
 .hero{padding:64px 0 40px}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 392px;gap:56px;align-items:center}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--kibble);margin:0 0 18px}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5.2vw,54px);line-height:1.32;margin:0;letter-spacing:-.01em;text-wrap:balance}
-h1 mark{background:var(--kibble);color:#2a1f0c;padding:0 .18em;border-radius:6px}
+h1 mark{background:var(--kibble);color:#2a1f0c;padding:.14em .2em .04em;border-radius:8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .lede{margin:20px 0 0;color:var(--muted);font-size:16.5px;max-width:30em}
 .hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
@@ -82,7 +92,9 @@ h1 mark{background:var(--kibble);color:#2a1f0c;padding:0 .18em;border-radius:6px
 @media (max-width:960px){
   .hero{padding:40px 0 24px}
   .hero .wrap{grid-template-columns:1fr;gap:36px}
-  .phone{transform:scale(.82);transform-origin:top center;margin:0 auto -140px}
+  .phone{transform:none;margin:0 auto;width:min(100%,392px);height:auto;aspect-ratio:392 / 800}
+  .screen{width:100%;height:100%}
+  .screen iframe{width:100%;height:100%}
 }
 
 /* 구역 공통 */

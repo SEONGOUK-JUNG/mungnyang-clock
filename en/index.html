@@ -128,7 +128,7 @@ section{padding:64px 0}
 .desk-list b{color:var(--ink);font-weight:600}
 @media (max-width:880px){.desk-sec .wrap{grid-template-columns:1fr;gap:30px}}
 
-/* Pricing */
+/* 값 */
 .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .plan{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
 .plan.lead{border-color:var(--kibble)}
@@ -363,7 +363,7 @@ footer a:hover{color:var(--ink)}
 
 <script>
 (function(){
-  var URL_DESK = '';   // Download 주소가 정해지면 여기에
+  var URL_DESK = 'https://github.com/SEONGOUK-JUNG/mungnyang-clock/releases/download/desktop-v1.4.0/MungnyangClock-Setup-1.4.0.exe';
   var get = document.getElementById('deskGet');
   if (URL_DESK) { get.href = URL_DESK; get.textContent = 'Download'; }
   else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }

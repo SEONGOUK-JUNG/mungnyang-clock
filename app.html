@@ -2190,7 +2190,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
  const entry=$('deskGuide'); if(!entry) return;
  if(window.mnDesk){ entry.remove(); return; }          // 바탕화면 앱 안에서는 필요 없다
  entry.hidden=false;
- const URL_DESK='';                                    // 내려받기 주소가 정해지면 여기에
+ const URL_DESK='https://github.com/SEONGOUK-JUNG/mungnyang-clock/releases/download/desktop-v1.4.0/MungnyangClock-Setup-1.4.0.exe';
  const win=/Windows NT/i.test(navigator.userAgent);
  entry.onclick=()=>{
   const a=$('deskDownload'), where=$('deskWhere');

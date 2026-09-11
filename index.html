@@ -175,7 +175,7 @@ footer a:hover{color:var(--ink)}
     <nav>
       <a href="#features">기능</a>
       <a href="#desktop">바탕화면</a>
-      <a href="#price">값</a>
+      <a href="#price">가격</a>
       <span class="langpick"><a href="/" data-lang="ko">한국어</a><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a></span>
       <a class="btn small" href="/app">앱 열어 보기</a>
     </nav>
@@ -189,7 +189,7 @@ footer a:hover{color:var(--ink)}
       <h1>사료 알갱이를 한 알씩 미는<br><mark>반려동물 시계</mark></h1>
       <p class="lede">강아지와 고양이가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞춥니다.
         밥때가 되면 그릇 앞에서 기다리고, 산책 시간에는 문 앞에서 기다립니다.
-        휴대폰에서도, PC 바탕화면에서도 같은 아이가 함께 삽니다.</p>
+        휴대폰에서도, PC 바탕화면에서도 같은 아이가 함께 지냅니다.</p>
       <div class="hero-cta">
         <a class="btn" href="/app">앱 열어 보기</a>
         <button class="btn ghost" type="button" data-open="deskSheet">PC 바탕화면 시계 받기</button>
@@ -240,7 +240,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div>
       <div class="sec-head">
-        <h2>바탕화면에도 삽니다</h2>
+        <h2>바탕화면 위에서도 함께 지냅니다</h2>
         <p>윈도우용 시계를 따로 만들었습니다. 창 테두리 없이 바탕화면 위에 떠 있고,
           시계 원 바깥은 마우스가 통과해 하던 일을 그대로 할 수 있습니다.</p>
       </div>
@@ -265,7 +265,7 @@ footer a:hover{color:var(--ink)}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <h2>값</h2>
+      <h2>가격</h2>
       <p>시작은 무료입니다. 아이와 보낸 시간으로 친구를 데려올 수도 있고, 사서 데려올 수도 있습니다.</p>
     </div>
     <div class="plans">
@@ -363,7 +363,7 @@ footer a:hover{color:var(--ink)}
 
 <script>
 (function(){
-  var URL_DESK = '';   // 내려받기 주소가 정해지면 여기에
+  var URL_DESK = 'https://github.com/SEONGOUK-JUNG/mungnyang-clock/releases/download/desktop-v1.4.0/MungnyangClock-Setup-1.4.0.exe';
   var get = document.getElementById('deskGet');
   if (URL_DESK) { get.href = URL_DESK; get.textContent = '내려받기'; }
   else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }

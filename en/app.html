@@ -192,16 +192,16 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <div class="pet-bar" id="petBar" aria-label="Friends with you"></div><div class="clock-wrap"><svg id="clockSvg" class="clock-svg" viewBox="-190 -187 380 386" role="img" aria-label="A pet clock with a kibble minute hand">
   <defs><radialGradient id="faceLight" cx="40%" cy="25%" r="80%"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 1h4M1 0v4" stroke="#99835b" stroke-opacity=".09" stroke-width=".4"/></pattern><filter id="softShadow" x="-50%" y="-50%" width="200%" height="220%"><feGaussianBlur stdDeviation="5"/></filter><filter id="handShadow" x="-100%" y="-50%" width="300%" height="220%"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#473b26" flood-opacity=".12"/></filter></defs>
   <ellipse cx="0" cy="157" rx="137" ry="13" fill="#363d24" opacity=".075" filter="url(#softShadow)"/>
-  <g id="dial"><circle class="rug-fringe" id="fringe" r="167"/><circle r="161" class="face-fill face-edge" stroke-width="2"/><circle r="159" fill="url(#faceLight)"/><circle id="texture" r="159" fill="url(#weave)"/><circle r="151" class="face-line" fill="none" stroke-width=".8"/><circle r="147" class="face-line" fill="none" stroke-width=".5" stroke-dasharray="1 2"/><g id="faceDecor"></g><g class="ticks" id="tickMarks"></g><g id="clockNumbers"></g><text class="clock-brand" text-anchor="middle" x="0" y="-61">MEONG NYANG</text><g id="hourHand" filter="url(#handShadow)"><path class="hour-hand" d="M-4.2 5 -3.8-73 Q-3.8-82 0-83Q3.8-82 3.8-73L4.2 5Z"/><path d="M0-72V-16" stroke="#fff" stroke-opacity=".17" stroke-width="1"/></g><g id="grains"></g><circle r="11" fill="var(--rug-edge)"/><circle r="8" fill="var(--paper)"/><circle r="3.2" fill="var(--hand)"/><g id="spot"></g><g id="flyingGrains"></g><g id="pets"></g><g id="petLabels"></g></g>
+  <g id="dial"><circle class="rug-fringe" id="fringe" r="167"/><circle r="161" class="face-fill face-edge" stroke-width="2"/><circle r="159" fill="url(#faceLight)"/><circle id="texture" r="159" fill="url(#weave)"/><circle r="151" class="face-line" fill="none" stroke-width=".8"/><circle r="147" class="face-line" fill="none" stroke-width=".5" stroke-dasharray="1 2"/><g id="faceDecor"></g><g class="ticks" id="tickMarks"></g><g id="clockNumbers"></g><text class="clock-brand" text-anchor="middle" x="0" y="-61">PAW MINUTE</text><g id="hourHand" filter="url(#handShadow)"><path class="hour-hand" d="M-4.2 5 -3.8-73 Q-3.8-82 0-83Q3.8-82 3.8-73L4.2 5Z"/><path d="M0-72V-16" stroke="#fff" stroke-opacity=".17" stroke-width="1"/></g><g id="grains"></g><circle r="11" fill="var(--rug-edge)"/><circle r="8" fill="var(--paper)"/><circle r="3.2" fill="var(--hand)"/><g id="spot"></g><g id="flyingGrains"></g><g id="pets"></g><g id="petLabels"></g></g>
   </svg></div>
   <div class="clock-digits"><span class="ampm" id="ampm">AM</span><time id="digitalTime">--:--</time><span class="seconds" id="digitalSeconds">00</span></div><p class="date-line" id="dateLine"></p>
   <div class="clock-status"><div class="status-pill" id="statusPill"><svg class="icon"><use href="#i-paw"/></svg><span id="statusText">Little footsteps keeping the time</span></div><button class="confirm-btn" id="confirmBtn" hidden><svg class="icon"><use href="#i-check"/></svg><span>Fed them</span></button></div><p class="today-min" id="todayMin"></p><p class="clock-caption"><svg class="icon"><use href="#i-heart"/></svg><span id="motionCaption">One piece, one step. Your day and mine.</span></p>
   <div class="mobile-bar"><button id="mobileSchedule"><svg class="icon"><use href="#i-calendar"/></svg>Promises · styling</button><button id="mobileDemo"><svg class="icon"><use href="#i-meal"/></svg>Preview the meal scene</button></div>
   </section>
-  <div><aside class="side" id="settingsPanel" aria-label="Promises and clock settings"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="Close settings"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="Manage"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="false" data-tab="style" tabindex="-1">Styling</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="true" data-tab="schedule">Daily promises</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">Records</button></div></div>
-  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule"><div class="section-row"><div><h2>Little promises</h2><p id="scheduleSubtitle">Meals and walks, looked after together.</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>Add promise</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">Walk today</small><b id="timerText">0 min</b></div><button type="button" id="timerBtn">Start the walk</button></div>
+  <div><aside class="side" id="settingsPanel" aria-label="Promises and clock settings"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="Close settings"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="Manage"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="true" data-tab="style">Styling</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="false" data-tab="schedule" tabindex="-1">Daily promises</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">Records</button></div></div>
+  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule" hidden><div class="section-row"><div><h2>Little promises</h2><p id="scheduleSubtitle">Meals and walks, looked after together.</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>Add promise</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">Walk today</small><b id="timerText">0 min</b></div><button type="button" id="timerBtn">Start the walk</button></div>
 <div id="scheduleList" class="schedule-list"></div><div class="next-event" id="nextEvent"></div><div class="daily-footer"><span class="small-note">Tap a promise to edit it.</span><button id="resetSchedules">Default promises</button></div></section>
-  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style" hidden><div class="section-row"><div><h2>Our timekeeper</h2><p>22 vector friends, 11 drawn friends and 10 other friends.</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">One friend, steady</button><button id="coopBtn">Push together</button></div><div class="breed-preview" aria-label="Preview of the chosen character’s motion">
+  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style"><div class="section-row"><div><h2>Our timekeeper</h2><p>22 vector friends, 11 drawn friends and 10 other friends.</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">One friend, steady</button><button id="coopBtn">Push together</button></div><div class="breed-preview" aria-label="Preview of the chosen character’s motion">
  <svg id="breedPreviewSvg" viewBox="-35 -75 76 84" role="img" aria-label="Enlarged character preview"></svg>
  <div><h3 id="breedPreviewName"></h3><p id="breedPreviewDescription"></p><div class="preview-modes" aria-label="Preview motion"><button data-preview-mode="walk" aria-pressed="true" class="selected">Walk</button><button data-preview-mode="push" aria-pressed="false">Pushing</button><button data-preview-mode="eat" aria-pressed="false">Eating</button><button data-preview-mode="sleep" aria-pressed="false">Sleep</button></div></div>
 </div>
@@ -211,7 +211,8 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
  <div id="characterGrid" class="character-grid"></div><p class="breed-count" id="breedCount"></p>
 </div>
 <p class="small-note" id="teamHint" style="margin-top:8px">Up to four friends can push together.</p><div id="teamNames" class="team-names" hidden></div></div><div class="control-group"><span class="control-label">Where the clock lives</span><div class="face-grid" id="faceGrid"></div></div><div class="control-group"><div class="toggle-row"><span>Dark screen</span><button id="darkToggle" class="toggle" role="switch" aria-label="Dark screen" aria-checked="false"></button></div><div class="toggle-row"><span>Sleep at night <small style="color:var(--muted)">22:00 — 07:00</small></span><button id="sleepToggle" class="toggle" role="switch" aria-label="Sleep at night" aria-checked="true"></button></div><button class="outline-btn" id="editProfile" style="width:100%;margin-top:17px">Name, birthday and photo</button></div></section>
-  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">Your pet and app settings</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>Make my pet a character · US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>Name, birthday and photo</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>Add a friend</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>Switch light and dark</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">Sleep at night (10 PM – 7 AM) · on</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>Preview the meal scene</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>Break reminders · do not disturb</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>Get the desktop clock</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>About this clock</button></div><p class="my-info">PawMinute 1.0 · created by Seongouk Jung<br>Design application 30-2026-0034331<br>Everything stays on this device.</p></section>
+  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">Your pet and app settings</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>Make my pet a character · US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>Name, birthday and photo</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>Add a friend</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>Switch light and dark</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">Sleep at night (10 PM – 7 AM) · on</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>Preview the meal scene</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>Break reminders · do not disturb</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>Get the desktop clock</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>About this clock</button></div><p class="my-links" style="margin:14px 0 0;font-size:12px;line-height:2"><a href="https://pawminute.com/en/" target="_blank" rel="noopener">pawminute.com</a> · <a href="https://pawminute.com/support" target="_blank" rel="noopener">Help & contact</a> · <a href="https://pawminute.com/privacy" target="_blank" rel="noopener">Privacy policy</a></p>
+<p class="my-info">PawMinute 1.0 · created by Seongouk Jung<br>Design application 30-2026-0034331<br>Everything stays on this device.</p></section>
 <section class="tab-pane" id="pane-records" role="tabpanel" aria-labelledby="tab-records" hidden><h2>Days we built together</h2><p class="small-note" style="margin-top:6px">This week, Monday through Sunday</p><div id="weekSummary" class="record-summary"></div><h3>Done today</h3><div id="todayLog"></div></section>
   <div class="demo-panel"><div class="demo-title"><strong>See it move</strong><span class="live-marker" id="timeMode">Live</span></div><div class="demo-buttons"><button id="demoMeal" class="outline-btn"><svg class="icon"><use href="#i-meal"/></svg>Preview the meal scene</button><button id="demoMinute" class="outline-btn"><svg class="icon"><use href="#i-fast"/></svg>Watch one minute</button></div><div class="speed-row"><span>Time speed</span><button data-speed="1" class="selected">Live</button><button data-speed="10">×10</button><button data-speed="60">×60</button></div><button id="jumpNext" class="jump-btn">Jump to 20 seconds before the next promise →</button></div>
   </aside><div class="mini-widget" aria-label="Widget preview"><svg id="miniFace" class="mini-face clock-svg" viewBox="-190 -187 380 386" aria-hidden="true"></svg><div><div class="widget-time" id="widgetTime">--:--</div><div class="widget-next" id="widgetNext">Together again today</div></div></div><p class="widget-label">4 × 2 widget preview</p></div>
@@ -255,9 +256,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="modal-title"><h2 id="lockTitle">A friend you have not met</h2><button type="button" class="icon-btn" data-close="lockDialog" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div>
 <div class="lock-head"><span class="lock-art" id="lockArt"></span><div><b id="lockName"></b><small id="lockDesc"></small></div></div>
 <div class="lock-mission" id="lockMission"></div>
-<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>Use a ticket</button>
-<button type="button" class="secondary-btn" id="lockOne"></button>
-<button type="button" class="secondary-btn" id="lockAll"></button></div>
+<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>Use a ticket</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
 </form></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -275,7 +274,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <li><b>Add</b>  — add the drawing you received below "Add the character you received" and you are done.</li>
  </ol>
  <div class="custom-actions" id="customPay"><a class="primary-btn" id="payLink" href="#" target="_blank" rel="noopener">Pay and order · US$99</a><a class="secondary-btn" id="mailLink" href="#">Send the photo (email)</a></div>
- <p class="small-note" id="customIosNote" hidden>Ordering and payment happen on the PawMinute website. You can add the finished drawing here.</p>
+ <p class="small-note" id="customIosNote" hidden>Orders are taken at <a href="https://pawminute.com/en/" target="_blank" rel="noopener">pawminute.com</a> . You can add the finished art here.</p>
  <h3 class="custom-h3">Add the character you received</h3>
  <div class="custom-import">
   <input type="file" id="customFile" accept="image/png,image/webp" hidden>
@@ -1806,7 +1805,7 @@ const el=(tag,attrs={},text)=>{const n=document.createElementNS(NS,tag);Object.e
 const clamp=n=>Math.max(0,Math.min(1,n)), smooth=n=>{n=clamp(n);return n*n*(3-2*n);}, lerp=(a,b,t)=>a+(b-a)*t;
 const pad=n=>String(n).padStart(2,'0'), dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`, hhmm=d=>`${pad(d.getHours())}:${pad(d.getMinutes())}`;
 const polar=(a,r)=>({x:Math.sin(a*Math.PI/180)*r,y:-Math.cos(a*Math.PI/180)*r});
-let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='schedule',lastAlert=-1;
+let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='style',lastAlert=-1;
 let breedFilter='original',breedQuery='',previewKey='',previewNode=null,previewMode='walk';
 function read(key,fallback){try{const raw=localStorage.getItem('mn.'+key);if(raw===null)return fallback;try{return JSON.parse(raw);}catch{return ['face','screen','sleep','coop'].includes(key)?raw:fallback;}}catch{return fallback;}}
 function save(key,value){try{localStorage.setItem('mn.'+key,JSON.stringify(value));}catch{if(!saveProblem){saveProblem=true;setTimeout(()=>toast('This browser cannot save it, so it lasts only for this session.'),500);}}}
@@ -2044,8 +2043,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 Records을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(Corgi·Bengal)
- const NEED_MIN=30, NEED_DAYS=7;               // day 30 min ·  in a row 7이면 교환권 한  photo
- const PRICE_ONE='US$4.99', PRICE_ALL='US$49.99';
+ const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // day 15 min · 3이면 교환권 한  photo (day쯤 빠져도 이어 준다)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2065,11 +2063,13 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   checkReward(); renderMission();
  };
  function streak(){
-  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true;
+  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true, skipped=0;
   while(n<400){
    const m=mins[dateKey(d)]||0;
-   if(m>=NEED_MIN) n++;
-   else if(!first) break;                      // Today은  진행 중 수 있으니 한 번은 넘어간다
+   if(m>=NEED_MIN){ n++; }
+   else if(first){ /* Today은  진행 중 수 있으니 넘어간다 */ }
+   else if(skipped<GRACE){ skipped++; }        // day쯤 빠져도 이어 준다
+   else break;
    first=false; d.setDate(d.getDate()-1);
   }
   return n;
@@ -2080,7 +2080,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   const earned=Math.floor(n/NEED_DAYS), got=Math.floor(rewarded/NEED_DAYS);
   if(earned>got){
    tickets+=earned-got; rewarded=earned*NEED_DAYS; wr('tickets',tickets); wr('reward',rewarded);
-   toast(NEED_DAYS+' days in a row! You earned a ticket for a new friend.');
+   toast(NEED_DAYS+' days done! You earned a ticket for a new friend.');
   }
  }
 
@@ -2117,11 +2117,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   if(allOpen){el.innerHTML='<div class="mission-top"><b>You are together with every friend</b></div>';return;}
   const n=streak(), today=mins[dateKey(engine.now())]||0, left=Math.max(0,NEED_MIN-today);
   const inCycle=n%NEED_DAYS;
-  el.innerHTML='<div class="mission-top"><b>New friend tickets '+tickets+' photo</b><span> in a row '+n+'</span></div>'
+  el.innerHTML='<div class="mission-top"><b>New friend tickets '+tickets+' photo</b><span>Days done '+n+'</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round((inCycle/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>'+(left>0
-     ? 'Today '+today+' min · '+left+' more minutes counts as a full day. '+NEED_DAYS+' days in a row lets you choose a new friend.'
-     : 'Today is complete. '+NEED_DAYS+' days in a row '+(NEED_DAYS-inCycle||NEED_DAYS)+' days to go.')+'</small>';
+     ? 'Today '+today+' min · '+left+' more minutes counts as a full day. '+NEED_DAYS+' days and you can pick a new friend.'
+     : 'Done for today. '+(NEED_DAYS-inCycle||NEED_DAYS)+' days to go.')+'</small>';
  }
 
  /* ── 잠긴 Friend를 눌렀을 때 ── */
@@ -2132,13 +2132,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockName').textContent=c.name;
   $('lockDesc').textContent=c.description||'';
   $('lockArt').innerHTML=PetArt.icon(key);
-  $('lockMission').innerHTML='<div class="mission-top"><b> in a row '+n+' / '+NEED_DAYS+'</b><span>Today '+today+' min / '+NEED_MIN+' min</span></div>'
+  $('lockMission').innerHTML='<div class="mission-top"><b>Days done '+n+' / '+NEED_DAYS+'</b><span>Today '+today+' min / '+NEED_MIN+' min</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
-   +'<small>day '+NEED_MIN+' minutes or more of walking or play, '+NEED_DAYS+' days in a row earns one ticket.</small>';
+   +'<small>day '+NEED_MIN+' minutes or more of walking or play, '+NEED_DAYS+' days to earn one ticket. Missing a day is fine — the count carries on.</small>';
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='Use a ticket ('+tickets+' photo)';
-  $('lockOne').textContent=PRICE_ONE+' to welcome';
-  $('lockAll').textContent='Unlock all '+PRICE_ALL;
-  $('lockNote').textContent='Once welcomed, they stay with you.';
+  $('lockNote').textContent=(tickets>0?'교환권 '+tickets+' photo이 있어요. Once welcomed, they stay with you.':'미션을 Finish내면 교환권을 한  photo 받아요.');
   showDialog('lockDialog');
  }
  function unlock(key){
@@ -2154,8 +2152,6 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+', nice to meet you! You can be together now.');
   setChar(lockKey);
  };
- const soon=function(){toast('Payment opens soon.');};
- $('lockOne').onclick=soon; $('lockAll').onclick=soon;
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){
@@ -2352,7 +2348,7 @@ let order=read('order',null);if(!order||typeof order!=='object'){const d=engine.
 let customChars=read('customChars',{});if(!customChars||typeof customChars!=='object')customChars={};
 let customDraft=null,customFace=1;
 function customMailHref(){const sub=encodeURIComponent(`[PawMinute] Character order ${order.code}`);const body=encodeURIComponent(`Order number: ${order.code}\nPet name: ${profile.name}\n(Please attach one photo. A clear front or side view works best.)\n`);return `mailto:${CUSTOM_MAIL}?subject=${sub}&body=${body}`;}
-function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=!ios;$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
+function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=true;document.querySelectorAll('#customDialog .custom-price,#customDialog .custom-steps,#customDialog .custom-lead').forEach(function(el){el.hidden=ios;});$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
 function renderCustomList(){const keys=Object.keys(customChars);$('customList').innerHTML=keys.length?'<span class="control-label">Your own pet, added</span>'+keys.map(k=>`<div class="row"><img src="${customChars[k].idle[0]}" alt=""><b>${esc(customChars[k].name)}</b><button type="button" data-del-custom="${k}">Remove</button></div>`).join(''):'';}
 $('myCustom').onclick=openCustom;
 $('customPick').onclick=()=>$('customFile').click();

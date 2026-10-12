@@ -198,10 +198,10 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <div class="clock-status"><div class="status-pill" id="statusPill"><svg class="icon"><use href="#i-paw"/></svg><span id="statusText">작은 발걸음으로 시간을 보내요</span></div><button class="confirm-btn" id="confirmBtn" hidden><svg class="icon"><use href="#i-check"/></svg><span>밥 줬어요</span></button></div><p class="today-min" id="todayMin"></p><p class="clock-caption"><svg class="icon"><use href="#i-heart"/></svg><span id="motionCaption">한 알씩, 한 걸음씩. 너와 나의 하루.</span></p>
   <div class="mobile-bar"><button id="mobileSchedule"><svg class="icon"><use href="#i-calendar"/></svg>일정 · 꾸미기</button><button id="mobileDemo"><svg class="icon"><use href="#i-meal"/></svg>밥 장면 미리보기</button></div>
   </section>
-  <div><aside class="side" id="settingsPanel" aria-label="일정 및 시계 설정"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="설정 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="관리 메뉴"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="false" data-tab="style" tabindex="-1">꾸미기</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="true" data-tab="schedule">하루 일정</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">기록</button></div></div>
-  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule"><div class="section-row"><div><h2>작은 약속들</h2><p id="scheduleSubtitle">밥도, 산책도 함께 챙겨요.</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>일정 추가</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">오늘 산책</small><b id="timerText">0분</b></div><button type="button" id="timerBtn">산책 시작하기</button></div>
+  <div><aside class="side" id="settingsPanel" aria-label="일정 및 시계 설정"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="설정 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="관리 메뉴"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="true" data-tab="style">꾸미기</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="false" data-tab="schedule" tabindex="-1">하루 일정</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">기록</button></div></div>
+  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule" hidden><div class="section-row"><div><h2>작은 약속들</h2><p id="scheduleSubtitle">밥도, 산책도 함께 챙겨요.</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>일정 추가</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">오늘 산책</small><b id="timerText">0분</b></div><button type="button" id="timerBtn">산책 시작하기</button></div>
 <div id="scheduleList" class="schedule-list"></div><div class="next-event" id="nextEvent"></div><div class="daily-footer"><span class="small-note">일정을 누르면 수정할 수 있어요.</span><button id="resetSchedules">기본 일정</button></div></section>
-  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style" hidden><div class="section-row"><div><h2>우리집 시간지기</h2><p>벡터 22종에 그림 멍냥이 11종, 기타 친구 10종을 더했어요.</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">혼자서 차근차근</button><button id="coopBtn">함께 밀어요</button></div><div class="breed-preview" aria-label="선택한 캐릭터 움직임 미리보기">
+  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style"><div class="section-row"><div><h2>우리집 시간지기</h2><p>벡터 22종에 그림 멍냥이 11종, 기타 친구 10종을 더했어요.</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">혼자서 차근차근</button><button id="coopBtn">함께 밀어요</button></div><div class="breed-preview" aria-label="선택한 캐릭터 움직임 미리보기">
  <svg id="breedPreviewSvg" viewBox="-35 -75 76 84" role="img" aria-label="캐릭터 확대 미리보기"></svg>
  <div><h3 id="breedPreviewName"></h3><p id="breedPreviewDescription"></p><div class="preview-modes" aria-label="미리보기 움직임"><button data-preview-mode="walk" aria-pressed="true" class="selected">걷기</button><button data-preview-mode="push" aria-pressed="false">밀기</button><button data-preview-mode="eat" aria-pressed="false">먹기</button><button data-preview-mode="sleep" aria-pressed="false">잠자기</button></div></div>
 </div>
@@ -211,7 +211,8 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
  <div id="characterGrid" class="character-grid"></div><p class="breed-count" id="breedCount"></p>
 </div>
 <p class="small-note" id="teamHint" style="margin-top:8px">함께 밀기는 친구 넷까지.</p><div id="teamNames" class="team-names" hidden></div></div><div class="control-group"><span class="control-label">시계가 머무는 곳</span><div class="face-grid" id="faceGrid"></div></div><div class="control-group"><div class="toggle-row"><span>어두운 화면</span><button id="darkToggle" class="toggle" role="switch" aria-label="어두운 화면" aria-checked="false"></button></div><div class="toggle-row"><span>밤에는 잠자기 <small style="color:var(--muted)">22:00 — 07:00</small></span><button id="sleepToggle" class="toggle" role="switch" aria-label="밤에는 잠자기" aria-checked="true"></button></div><button class="outline-btn" id="editProfile" style="width:100%;margin-top:17px">이름 · 생일 · 사진 바꾸기</button></div></section>
-  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">우리 멍냥이와 앱 설정</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>우리 아이 캐릭터 만들기 · US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>이름 · 생일 · 사진 바꾸기</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>함께할 친구 추가하기</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>밝은/어두운 화면 바꾸기</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">밤에는 잠자기 (22:00 ~ 07:00) · 켜짐</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>밥 장면 미리보기</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>쉬는 시간 알림 · 방해 금지</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>PC 바탕화면 시계 받기</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>시계 이야기</button></div><p class="my-info">멍냥시계 1.0 · 기획 정성욱<br>화상디자인 등록출원 30-2026-0034331<br>정보는 이 기기 안에만 저장돼요.</p></section>
+  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">우리 멍냥이와 앱 설정</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>우리 아이 캐릭터 만들기 · US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>이름 · 생일 · 사진 바꾸기</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>함께할 친구 추가하기</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>밝은/어두운 화면 바꾸기</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">밤에는 잠자기 (22:00 ~ 07:00) · 켜짐</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>밥 장면 미리보기</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>쉬는 시간 알림 · 방해 금지</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>PC 바탕화면 시계 받기</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>시계 이야기</button></div><p class="my-links" style="margin:14px 0 0;font-size:12px;line-height:2"><a href="https://pawminute.com/" target="_blank" rel="noopener">pawminute.com</a> · <a href="https://pawminute.com/support" target="_blank" rel="noopener">도움말·문의</a> · <a href="https://pawminute.com/privacy" target="_blank" rel="noopener">개인정보 처리방침</a></p>
+<p class="my-info">멍냥시계 1.0 · 기획 정성욱<br>화상디자인 등록출원 30-2026-0034331<br>정보는 이 기기 안에만 저장돼요.</p></section>
 <section class="tab-pane" id="pane-records" role="tabpanel" aria-labelledby="tab-records" hidden><h2>함께 쌓은 하루</h2><p class="small-note" style="margin-top:6px">이번 주 월요일부터 일요일까지</p><div id="weekSummary" class="record-summary"></div><h3>오늘 한 일</h3><div id="todayLog"></div></section>
   <div class="demo-panel"><div class="demo-title"><strong>움직임을 만나보세요</strong><span class="live-marker" id="timeMode">실시간</span></div><div class="demo-buttons"><button id="demoMeal" class="outline-btn"><svg class="icon"><use href="#i-meal"/></svg>밥 장면 미리보기</button><button id="demoMinute" class="outline-btn"><svg class="icon"><use href="#i-fast"/></svg>1분 동작 보기</button></div><div class="speed-row"><span>시간 속도</span><button data-speed="1" class="selected">실시간</button><button data-speed="10">×10</button><button data-speed="60">×60</button></div><button id="jumpNext" class="jump-btn">다음 일정 20초 전으로 이동 →</button></div>
   </aside><div class="mini-widget" aria-label="위젯 모양 미리보기"><svg id="miniFace" class="mini-face clock-svg" viewBox="-190 -187 380 386" aria-hidden="true"></svg><div><div class="widget-time" id="widgetTime">--:--</div><div class="widget-next" id="widgetNext">오늘도 함께해요</div></div></div><p class="widget-label">4 × 2 위젯 미리보기</p></div>
@@ -255,9 +256,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="modal-title"><h2 id="lockTitle">아직 못 만난 친구</h2><button type="button" class="icon-btn" data-close="lockDialog" aria-label="닫기"><svg class="icon"><use href="#i-close"/></svg></button></div>
 <div class="lock-head"><span class="lock-art" id="lockArt"></span><div><b id="lockName"></b><small id="lockDesc"></small></div></div>
 <div class="lock-mission" id="lockMission"></div>
-<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>교환권으로 데려오기</button>
-<button type="button" class="secondary-btn" id="lockOne"></button>
-<button type="button" class="secondary-btn" id="lockAll"></button></div>
+<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>교환권으로 데려오기</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
 </form></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -275,7 +274,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <li><b>넣기</b> — 받은 그림을 아래 "받은 캐릭터 넣기"에서 고르면 끝.</li>
  </ol>
  <div class="custom-actions" id="customPay"><a class="primary-btn" id="payLink" href="#" target="_blank" rel="noopener">결제하고 신청하기 · US$99</a><a class="secondary-btn" id="mailLink" href="#">사진 보내기 (이메일)</a></div>
- <p class="small-note" id="customIosNote" hidden>신청과 결제는 멍냥시계 웹사이트에서 할 수 있어요. 받은 그림 넣기는 여기서 됩니다.</p>
+ <p class="small-note" id="customIosNote" hidden>신청은 <a href="https://pawminute.com/" target="_blank" rel="noopener">pawminute.com</a> 에서 받습니다. 받은 그림 넣기는 여기서 됩니다.</p>
  <h3 class="custom-h3">받은 캐릭터 넣기</h3>
  <div class="custom-import">
   <input type="file" id="customFile" accept="image/png,image/webp" hidden>
@@ -1806,7 +1805,7 @@ const el=(tag,attrs={},text)=>{const n=document.createElementNS(NS,tag);Object.e
 const clamp=n=>Math.max(0,Math.min(1,n)), smooth=n=>{n=clamp(n);return n*n*(3-2*n);}, lerp=(a,b,t)=>a+(b-a)*t;
 const pad=n=>String(n).padStart(2,'0'), dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`, hhmm=d=>`${pad(d.getHours())}:${pad(d.getMinutes())}`;
 const polar=(a,r)=>({x:Math.sin(a*Math.PI/180)*r,y:-Math.cos(a*Math.PI/180)*r});
-let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='schedule',lastAlert=-1;
+let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='style',lastAlert=-1;
 let breedFilter='original',breedQuery='',previewKey='',previewNode=null,previewMode='walk';
 function read(key,fallback){try{const raw=localStorage.getItem('mn.'+key);if(raw===null)return fallback;try{return JSON.parse(raw);}catch{return ['face','screen','sleep','coop'].includes(key)?raw:fallback;}}catch{return fallback;}}
 function save(key,value){try{localStorage.setItem('mn.'+key,JSON.stringify(value));}catch{if(!saveProblem){saveProblem=true;setTimeout(()=>toast('이 브라우저에서는 저장할 수 없어, 이번 화면에서만 유지돼요.'),500);}}}
@@ -2044,8 +2043,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 기록을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(코기·벵갈)
- const NEED_MIN=30, NEED_DAYS=7;               // 하루 30분 · 연속 7일이면 교환권 한 장
- const PRICE_ONE='US$4.99', PRICE_ALL='US$49.99';
+ const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // 하루 15분 · 3일이면 교환권 한 장 (하루쯤 빠져도 이어 준다)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2065,11 +2063,13 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   checkReward(); renderMission();
  };
  function streak(){
-  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true;
+  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true, skipped=0;
   while(n<400){
    const m=mins[dateKey(d)]||0;
-   if(m>=NEED_MIN) n++;
-   else if(!first) break;                      // 오늘은 아직 진행 중일 수 있으니 한 번은 넘어간다
+   if(m>=NEED_MIN){ n++; }
+   else if(first){ /* 오늘은 아직 진행 중일 수 있으니 넘어간다 */ }
+   else if(skipped<GRACE){ skipped++; }        // 하루쯤 빠져도 이어 준다
+   else break;
    first=false; d.setDate(d.getDate()-1);
   }
   return n;
@@ -2080,7 +2080,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   const earned=Math.floor(n/NEED_DAYS), got=Math.floor(rewarded/NEED_DAYS);
   if(earned>got){
    tickets+=earned-got; rewarded=earned*NEED_DAYS; wr('tickets',tickets); wr('reward',rewarded);
-   toast(NEED_DAYS+'일 연속 성공! 새 친구 교환권을 받았어요.');
+   toast(NEED_DAYS+'일 채웠어요! 새 친구 교환권을 받았어요.');
   }
  }
 
@@ -2117,11 +2117,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   if(allOpen){el.innerHTML='<div class="mission-top"><b>모든 친구와 함께하고 있어요</b></div>';return;}
   const n=streak(), today=mins[dateKey(engine.now())]||0, left=Math.max(0,NEED_MIN-today);
   const inCycle=n%NEED_DAYS;
-  el.innerHTML='<div class="mission-top"><b>새 친구 교환권 '+tickets+'장</b><span>연속 '+n+'일</span></div>'
+  el.innerHTML='<div class="mission-top"><b>새 친구 교환권 '+tickets+'장</b><span>채운 날 '+n+'일</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round((inCycle/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>'+(left>0
-     ? '오늘 '+today+'분 · '+left+'분 더 채우면 하루로 쳐요. '+NEED_DAYS+'일 연속이면 새 친구를 고를 수 있어요.'
-     : '오늘은 다 채웠어요. '+NEED_DAYS+'일 연속까지 '+(NEED_DAYS-inCycle||NEED_DAYS)+'일 남았어요.')+'</small>';
+     ? '오늘 '+today+'분 · '+left+'분 더 채우면 하루로 쳐요. '+NEED_DAYS+'일을 채우면 새 친구를 고를 수 있어요.'
+     : '오늘은 다 채웠어요. 새 친구까지 '+(NEED_DAYS-inCycle||NEED_DAYS)+'일 남았어요.')+'</small>';
  }
 
  /* ── 잠긴 친구를 눌렀을 때 ── */
@@ -2132,13 +2132,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockName').textContent=c.name;
   $('lockDesc').textContent=c.description||'';
   $('lockArt').innerHTML=PetArt.icon(key);
-  $('lockMission').innerHTML='<div class="mission-top"><b>연속 '+n+'일 / '+NEED_DAYS+'일</b><span>오늘 '+today+'분 / '+NEED_MIN+'분</span></div>'
+  $('lockMission').innerHTML='<div class="mission-top"><b>채운 날 '+n+'일 / '+NEED_DAYS+'일</b><span>오늘 '+today+'분 / '+NEED_MIN+'분</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
-   +'<small>하루 '+NEED_MIN+'분 이상 산책하거나 놀아 주기를 '+NEED_DAYS+'일 연속 하면 교환권 한 장을 받아요.</small>';
+   +'<small>하루 '+NEED_MIN+'분 이상 산책하거나 놀아 주기를 '+NEED_DAYS+'일 채우면 교환권 한 장을 받아요. 하루쯤 빠져도 이어집니다.</small>';
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='교환권으로 데려오기 ('+tickets+'장)';
-  $('lockOne').textContent=PRICE_ONE+'에 데려오기';
-  $('lockAll').textContent='전부 열기 '+PRICE_ALL;
-  $('lockNote').textContent='한 번 데려오면 계속 함께합니다.';
+  $('lockNote').textContent=(tickets>0?'교환권 '+tickets+'장이 있어요. 한 번 데려오면 계속 함께합니다.':'미션을 끝내면 교환권을 한 장 받아요.');
   showDialog('lockDialog');
  }
  function unlock(key){
@@ -2154,8 +2152,6 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+', 반가워! 이제 함께할 수 있어요.');
   setChar(lockKey);
  };
- const soon=function(){toast('결제는 곧 열립니다.');};
- $('lockOne').onclick=soon; $('lockAll').onclick=soon;
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){
@@ -2352,7 +2348,7 @@ let order=read('order',null);if(!order||typeof order!=='object'){const d=engine.
 let customChars=read('customChars',{});if(!customChars||typeof customChars!=='object')customChars={};
 let customDraft=null,customFace=1;
 function customMailHref(){const sub=encodeURIComponent(`[멍냥시계] 캐릭터 만들기 신청 ${order.code}`);const body=encodeURIComponent(`주문번호: ${order.code}\n아이 이름: ${profile.name}\n(사진 1장을 첨부해 주세요. 정면이나 옆모습이 또렷하게 보이는 사진이 좋아요.)\n`);return `mailto:${CUSTOM_MAIL}?subject=${sub}&body=${body}`;}
-function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=!ios;$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
+function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=true;document.querySelectorAll('#customDialog .custom-price,#customDialog .custom-steps,#customDialog .custom-lead').forEach(function(el){el.hidden=ios;});$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
 function renderCustomList(){const keys=Object.keys(customChars);$('customList').innerHTML=keys.length?'<span class="control-label">넣어 둔 우리 아이</span>'+keys.map(k=>`<div class="row"><img src="${customChars[k].idle[0]}" alt=""><b>${esc(customChars[k].name)}</b><button type="button" data-del-custom="${k}">빼기</button></div>`).join(''):'';}
 $('myCustom').onclick=openCustom;
 $('customPick').onclick=()=>$('customFile').click();

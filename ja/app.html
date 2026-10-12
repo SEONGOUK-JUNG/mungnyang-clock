@@ -192,16 +192,16 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <div class="pet-bar" id="petBar" aria-label="いっしょにいる子"></div><div class="clock-wrap"><svg id="clockSvg" class="clock-svg" viewBox="-190 -187 380 386" role="img" aria-label="ごはん粒の分針を押すペット時計">
   <defs><radialGradient id="faceLight" cx="40%" cy="25%" r="80%"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 1h4M1 0v4" stroke="#99835b" stroke-opacity=".09" stroke-width=".4"/></pattern><filter id="softShadow" x="-50%" y="-50%" width="200%" height="220%"><feGaussianBlur stdDeviation="5"/></filter><filter id="handShadow" x="-100%" y="-50%" width="300%" height="220%"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#473b26" flood-opacity=".12"/></filter></defs>
   <ellipse cx="0" cy="157" rx="137" ry="13" fill="#363d24" opacity=".075" filter="url(#softShadow)"/>
-  <g id="dial"><circle class="rug-fringe" id="fringe" r="167"/><circle r="161" class="face-fill face-edge" stroke-width="2"/><circle r="159" fill="url(#faceLight)"/><circle id="texture" r="159" fill="url(#weave)"/><circle r="151" class="face-line" fill="none" stroke-width=".8"/><circle r="147" class="face-line" fill="none" stroke-width=".5" stroke-dasharray="1 2"/><g id="faceDecor"></g><g class="ticks" id="tickMarks"></g><g id="clockNumbers"></g><text class="clock-brand" text-anchor="middle" x="0" y="-61">MEONG NYANG</text><g id="hourHand" filter="url(#handShadow)"><path class="hour-hand" d="M-4.2 5 -3.8-73 Q-3.8-82 0-83Q3.8-82 3.8-73L4.2 5Z"/><path d="M0-72V-16" stroke="#fff" stroke-opacity=".17" stroke-width="1"/></g><g id="grains"></g><circle r="11" fill="var(--rug-edge)"/><circle r="8" fill="var(--paper)"/><circle r="3.2" fill="var(--hand)"/><g id="spot"></g><g id="flyingGrains"></g><g id="pets"></g><g id="petLabels"></g></g>
+  <g id="dial"><circle class="rug-fringe" id="fringe" r="167"/><circle r="161" class="face-fill face-edge" stroke-width="2"/><circle r="159" fill="url(#faceLight)"/><circle id="texture" r="159" fill="url(#weave)"/><circle r="151" class="face-line" fill="none" stroke-width=".8"/><circle r="147" class="face-line" fill="none" stroke-width=".5" stroke-dasharray="1 2"/><g id="faceDecor"></g><g class="ticks" id="tickMarks"></g><g id="clockNumbers"></g><text class="clock-brand" text-anchor="middle" x="0" y="-61">PAW MINUTE</text><g id="hourHand" filter="url(#handShadow)"><path class="hour-hand" d="M-4.2 5 -3.8-73 Q-3.8-82 0-83Q3.8-82 3.8-73L4.2 5Z"/><path d="M0-72V-16" stroke="#fff" stroke-opacity=".17" stroke-width="1"/></g><g id="grains"></g><circle r="11" fill="var(--rug-edge)"/><circle r="8" fill="var(--paper)"/><circle r="3.2" fill="var(--hand)"/><g id="spot"></g><g id="flyingGrains"></g><g id="pets"></g><g id="petLabels"></g></g>
   </svg></div>
   <div class="clock-digits"><span class="ampm" id="ampm">AM</span><time id="digitalTime">--:--</time><span class="seconds" id="digitalSeconds">00</span></div><p class="date-line" id="dateLine"></p>
   <div class="clock-status"><div class="status-pill" id="statusPill"><svg class="icon"><use href="#i-paw"/></svg><span id="statusText">小さな足あとで時を刻みます</span></div><button class="confirm-btn" id="confirmBtn" hidden><svg class="icon"><use href="#i-check"/></svg><span>ごはんをあげました</span></button></div><p class="today-min" id="todayMin"></p><p class="clock-caption"><svg class="icon"><use href="#i-heart"/></svg><span id="motionCaption">一粒ずつ、一歩ずつ。きみとわたしの一日。</span></p>
   <div class="mobile-bar"><button id="mobileSchedule"><svg class="icon"><use href="#i-calendar"/></svg>予定・きせかえ</button><button id="mobileDemo"><svg class="icon"><use href="#i-meal"/></svg>ごはんの場面を見る</button></div>
   </section>
-  <div><aside class="side" id="settingsPanel" aria-label="予定と時計の設定"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="設定を閉じる"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="管理"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="false" data-tab="style" tabindex="-1">きせかえ</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="true" data-tab="schedule">一日の予定</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">記録</button></div></div>
-  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule"><div class="section-row"><div><h2>小さな約束</h2><p id="scheduleSubtitle">ごはんも散歩も、いっしょに。</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>予定を追加</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">今日の散歩</small><b id="timerText">0分</b></div><button type="button" id="timerBtn">散歩をはじめる</button></div>
+  <div><aside class="side" id="settingsPanel" aria-label="予定と時計の設定"><div class="side-close"><button class="icon-btn" id="panelClose" aria-label="設定を閉じる"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="side-head"><div class="panel-tabs" role="tablist" aria-label="管理"><button role="tab" id="tab-style" aria-controls="pane-style" aria-selected="true" data-tab="style">きせかえ</button><button role="tab" id="tab-schedule" aria-controls="pane-schedule" aria-selected="false" data-tab="schedule" tabindex="-1">一日の予定</button><button role="tab" id="tab-records" aria-controls="pane-records" aria-selected="false" data-tab="records" tabindex="-1">記録</button></div></div>
+  <section class="tab-pane" id="pane-schedule" role="tabpanel" aria-labelledby="tab-schedule" hidden><div class="section-row"><div><h2>小さな約束</h2><p id="scheduleSubtitle">ごはんも散歩も、いっしょに。</p></div><button class="add-btn" id="addSchedule"><svg class="icon"><use href="#i-plus"/></svg>予定を追加</button></div><div class="timer-card" id="timerCard"><div><small id="timerLabel">今日の散歩</small><b id="timerText">0分</b></div><button type="button" id="timerBtn">散歩をはじめる</button></div>
 <div id="scheduleList" class="schedule-list"></div><div class="next-event" id="nextEvent"></div><div class="daily-footer"><span class="small-note">予定を押すと直せます。</span><button id="resetSchedules">はじめの予定</button></div></section>
-  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style" hidden><div class="section-row"><div><h2>うちの時間番</h2><p>ベクター22種に、描き下ろし11種とそのほかの仲間10種を足しました。</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">ひとりで、ゆっくり</button><button id="coopBtn">いっしょに押す</button></div><div class="breed-preview" aria-label="選んだキャラクターの動きの下見">
+  <section class="tab-pane" id="pane-style" role="tabpanel" aria-labelledby="tab-style"><div class="section-row"><div><h2>うちの時間番</h2><p>ベクター22種に、描き下ろし11種とそのほかの仲間10種を足しました。</p></div></div><div class="control-group"><div class="segmented"><button id="soloBtn" class="selected">ひとりで、ゆっくり</button><button id="coopBtn">いっしょに押す</button></div><div class="breed-preview" aria-label="選んだキャラクターの動きの下見">
  <svg id="breedPreviewSvg" viewBox="-35 -75 76 84" role="img" aria-label="キャラクターの拡大表示"></svg>
  <div><h3 id="breedPreviewName"></h3><p id="breedPreviewDescription"></p><div class="preview-modes" aria-label="下見の動き"><button data-preview-mode="walk" aria-pressed="true" class="selected">歩く</button><button data-preview-mode="push" aria-pressed="false">押す</button><button data-preview-mode="eat" aria-pressed="false">食べる</button><button data-preview-mode="sleep" aria-pressed="false">おやすみ</button></div></div>
 </div>
@@ -211,7 +211,8 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
  <div id="characterGrid" class="character-grid"></div><p class="breed-count" id="breedCount"></p>
 </div>
 <p class="small-note" id="teamHint" style="margin-top:8px">いっしょに押せるのは4匹までです。</p><div id="teamNames" class="team-names" hidden></div></div><div class="control-group"><span class="control-label">時計のいる場所</span><div class="face-grid" id="faceGrid"></div></div><div class="control-group"><div class="toggle-row"><span>暗い画面</span><button id="darkToggle" class="toggle" role="switch" aria-label="暗い画面" aria-checked="false"></button></div><div class="toggle-row"><span>夜はおやすみ <small style="color:var(--muted)">22:00 — 07:00</small></span><button id="sleepToggle" class="toggle" role="switch" aria-label="夜はおやすみ" aria-checked="true"></button></div><button class="outline-btn" id="editProfile" style="width:100%;margin-top:17px">名前・誕生日・写真</button></div></section>
-  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">うちの子とアプリの設定</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>うちの子をキャラクターに・US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>名前・誕生日・写真</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>仲間を追加</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>明るい画面と暗い画面を切り替え</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">夜はおやすみ（22:00〜07:00）・オン</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>ごはんの場面を見る</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>休憩の知らせ・おじゃま防止</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>デスクトップ時計を受け取る</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>この時計の話</button></div><p class="my-info">PawMinute 1.0・企画 チョン・ソンウク<br>画像デザイン出願 30-2026-0034331<br>情報はこの端末の中にだけ残ります。</p></section>
+  <section class="tab-pane" id="pane-my" role="tabpanel" hidden><h2>MY</h2><p class="small-note" style="margin:4px 0 12px">うちの子とアプリの設定</p><div class="my-list"><button type="button" id="myCustom" class="custom-entry"><svg class="icon"><use href="#i-star"/></svg>うちの子をキャラクターに・US$99</button><button type="button" id="myProfile"><svg class="icon"><use href="#i-paw"/></svg>名前・誕生日・写真</button><button type="button" id="myAddMember"><svg class="icon"><use href="#i-plus"/></svg>仲間を追加</button><button type="button" id="myDark"><svg class="icon"><use href="#i-moon"/></svg>明るい画面と暗い画面を切り替え</button><button type="button" id="mySleep"><svg class="icon"><use href="#i-clock"/></svg><span id="mySleepText">夜はおやすみ（22:00〜07:00）・オン</span></button><button type="button" id="myPreview"><svg class="icon"><use href="#i-meal"/></svg>ごはんの場面を見る</button><button type="button" id="myCare" hidden><svg class="icon"><use href="#i-clock"/></svg>休憩の知らせ・おじゃま防止</button><button type="button" id="deskGuide" hidden><svg class="icon"><use href="#i-expand"/></svg>デスクトップ時計を受け取る</button><button type="button" id="myHelp"><svg class="icon"><use href="#i-heart"/></svg>この時計の話</button></div><p class="my-links" style="margin:14px 0 0;font-size:12px;line-height:2"><a href="https://pawminute.com/ja/" target="_blank" rel="noopener">pawminute.com</a> · <a href="https://pawminute.com/support" target="_blank" rel="noopener">ヘルプ・お問い合わせ</a> · <a href="https://pawminute.com/privacy" target="_blank" rel="noopener">プライバシーポリシー</a></p>
+<p class="my-info">PawMinute 1.0・企画 チョン・ソンウク<br>画像デザイン出願 30-2026-0034331<br>情報はこの端末の中にだけ残ります。</p></section>
 <section class="tab-pane" id="pane-records" role="tabpanel" aria-labelledby="tab-records" hidden><h2>いっしょに重ねた日</h2><p class="small-note" style="margin-top:6px">今週の月曜から日曜まで</p><div id="weekSummary" class="record-summary"></div><h3>今日したこと</h3><div id="todayLog"></div></section>
   <div class="demo-panel"><div class="demo-title"><strong>動きを見てみてください</strong><span class="live-marker" id="timeMode">実時刻</span></div><div class="demo-buttons"><button id="demoMeal" class="outline-btn"><svg class="icon"><use href="#i-meal"/></svg>ごはんの場面を見る</button><button id="demoMinute" class="outline-btn"><svg class="icon"><use href="#i-fast"/></svg>1分の動きを見る</button></div><div class="speed-row"><span>時間の速さ</span><button data-speed="1" class="selected">実時刻</button><button data-speed="10">×10</button><button data-speed="60">×60</button></div><button id="jumpNext" class="jump-btn">次の約束の20秒前へ →</button></div>
   </aside><div class="mini-widget" aria-label="ウィジェットの見本"><svg id="miniFace" class="mini-face clock-svg" viewBox="-190 -187 380 386" aria-hidden="true"></svg><div><div class="widget-time" id="widgetTime">--:--</div><div class="widget-next" id="widgetNext">今日もいっしょに</div></div></div><p class="widget-label">4 × 2 ウィジェットの見本</p></div>
@@ -255,9 +256,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="modal-title"><h2 id="lockTitle">まだ会えていない仲間</h2><button type="button" class="icon-btn" data-close="lockDialog" aria-label="閉じる"><svg class="icon"><use href="#i-close"/></svg></button></div>
 <div class="lock-head"><span class="lock-art" id="lockArt"></span><div><b id="lockName"></b><small id="lockDesc"></small></div></div>
 <div class="lock-mission" id="lockMission"></div>
-<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>引換券で迎える</button>
-<button type="button" class="secondary-btn" id="lockOne"></button>
-<button type="button" class="secondary-btn" id="lockAll"></button></div>
+<div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>引換券で迎える</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
 </form></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -275,7 +274,7 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
   <li><b>追加</b>  — 届いた絵を下に "届いたキャラクターを追加"で選べば完了。</li>
  </ol>
  <div class="custom-actions" id="customPay"><a class="primary-btn" id="payLink" href="#" target="_blank" rel="noopener">支払って申し込む・US$99</a><a class="secondary-btn" id="mailLink" href="#">写真を送る（メール）</a></div>
- <p class="small-note" id="customIosNote" hidden>お申し込みとお支払いはPawMinuteのサイトでできます。届いた絵の取り込みはここで行えます。</p>
+ <p class="small-note" id="customIosNote" hidden>お申し込みは <a href="https://pawminute.com/ja/" target="_blank" rel="noopener">pawminute.com</a> で受け付けます。届いた絵はここで追加できます。</p>
  <h3 class="custom-h3">届いたキャラクターを追加</h3>
  <div class="custom-import">
   <input type="file" id="customFile" accept="image/png,image/webp" hidden>
@@ -1806,7 +1805,7 @@ const el=(tag,attrs={},text)=>{const n=document.createElementNS(NS,tag);Object.e
 const clamp=n=>Math.max(0,Math.min(1,n)), smooth=n=>{n=clamp(n);return n*n*(3-2*n);}, lerp=(a,b,t)=>a+(b-a)*t;
 const pad=n=>String(n).padStart(2,'0'), dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`, hhmm=d=>`${pad(d.getHours())}:${pad(d.getMinutes())}`;
 const polar=(a,r)=>({x:Math.sin(a*Math.PI/180)*r,y:-Math.cos(a*Math.PI/180)*r});
-let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='schedule',lastAlert=-1;
+let saveProblem=false,toastTimer,dirty=true,lastUI=-1,engine,editingId=null,photoDraft='',lastScene='',sceneOrigin=null,sceneLastStage='',lastCompleted='',currentTab='style',lastAlert=-1;
 let breedFilter='original',breedQuery='',previewKey='',previewNode=null,previewMode='walk';
 function read(key,fallback){try{const raw=localStorage.getItem('mn.'+key);if(raw===null)return fallback;try{return JSON.parse(raw);}catch{return ['face','screen','sleep','coop'].includes(key)?raw:fallback;}}catch{return fallback;}}
 function save(key,value){try{localStorage.setItem('mn.'+key,JSON.stringify(value));}catch{if(!saveProblem){saveProblem=true;setTimeout(()=>toast('このブラウザでは保存できないので、今回の画面でだけ保たれます。'),500);}}}
@@ -2044,8 +2043,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 記録을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(コーギー·ベンガル)
- const NEED_MIN=30, NEED_DAYS=7;               // 一日 30分 · 連続 7日이면 교환권 한 枚
- const PRICE_ONE='US$4.99', PRICE_ALL='US$49.99';
+ const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // 一日 15分 · 3日이면 교환권 한 枚 (一日쯤 빠져도 이어 준다)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2065,11 +2063,13 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   checkReward(); renderMission();
  };
  function streak(){
-  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true;
+  let n=0, d=new Date(engine.now()); d.setHours(0,0,0,0); let first=true, skipped=0;
   while(n<400){
    const m=mins[dateKey(d)]||0;
-   if(m>=NEED_MIN) n++;
-   else if(!first) break;                      // 今日은  진행 중日 수 있으니 한 번은 넘어간다
+   if(m>=NEED_MIN){ n++; }
+   else if(first){ /* 今日은  진행 중日 수 있으니 넘어간다 */ }
+   else if(skipped<GRACE){ skipped++; }        // 一日쯤 빠져도 이어 준다
+   else break;
    first=false; d.setDate(d.getDate()-1);
   }
   return n;
@@ -2080,7 +2080,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   const earned=Math.floor(n/NEED_DAYS), got=Math.floor(rewarded/NEED_DAYS);
   if(earned>got){
    tickets+=earned-got; rewarded=earned*NEED_DAYS; wr('tickets',tickets); wr('reward',rewarded);
-   toast(NEED_DAYS+'日連続、達成です。新しい仲間の引換券をもらいました。');
+   toast(NEED_DAYS+'日ぶん達成！新しい友だちの交換券をもらいました。');
   }
  }
 
@@ -2117,11 +2117,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   if(allOpen){el.innerHTML='<div class="mission-top"><b>すべての仲間といっしょです</b></div>';return;}
   const n=streak(), today=mins[dateKey(engine.now())]||0, left=Math.max(0,NEED_MIN-today);
   const inCycle=n%NEED_DAYS;
-  el.innerHTML='<div class="mission-top"><b>新しい仲間の引換券 '+tickets+'枚</b><span>連続 '+n+'日</span></div>'
+  el.innerHTML='<div class="mission-top"><b>新しい仲間の引換券 '+tickets+'枚</b><span>達成 '+n+'日</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round((inCycle/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>'+(left>0
-     ? '今日 '+today+'分 · '+left+'分足せば一日ぶんになります。 '+NEED_DAYS+'日続けば、新しい仲間を選べます。'
-     : '今日はもう足りています。 '+NEED_DAYS+'日連続まで '+(NEED_DAYS-inCycle||NEED_DAYS)+'日のこりです。')+'</small>';
+     ? '今日 '+today+'分 · '+left+'分足せば一日ぶんになります。 '+NEED_DAYS+'日ぶんで新しい友だちを選べます。'
+     : '今日はおしまい。新しい友だちまであと'+(NEED_DAYS-inCycle||NEED_DAYS)+'日のこりです。')+'</small>';
  }
 
  /* ── 잠긴 仲間를 눌렀을 때 ── */
@@ -2132,13 +2132,11 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockName').textContent=c.name;
   $('lockDesc').textContent=c.description||'';
   $('lockArt').innerHTML=PetArt.icon(key);
-  $('lockMission').innerHTML='<div class="mission-top"><b>連続 '+n+'日 / '+NEED_DAYS+'日</b><span>今日 '+today+'分 / '+NEED_MIN+'分</span></div>'
+  $('lockMission').innerHTML='<div class="mission-top"><b>達成 '+n+'日 / '+NEED_DAYS+'日</b><span>今日 '+today+'分 / '+NEED_MIN+'分</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
-   +'<small>一日 '+NEED_MIN+'分以上の散歩か遊びを '+NEED_DAYS+'日続けると引換券が1枚もらえます。</small>';
+   +'<small>一日 '+NEED_MIN+'分以上の散歩か遊びを '+NEED_DAYS+'日ぶんで交換券が1枚もらえます。1日くらい抜けても続きます。</small>';
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='引換券で迎える（'+tickets+'枚）';
-  $('lockOne').textContent=PRICE_ONE+'で迎える';
-  $('lockAll').textContent='すべて開く '+PRICE_ALL;
-  $('lockNote').textContent='一度迎えたら、ずっといっしょです。';
+  $('lockNote').textContent=(tickets>0?'교환권 '+tickets+'枚이 있어요. 一度迎えたら、ずっといっしょです。':'미션을 おわり내면 교환권을 한 枚 받아요.');
   showDialog('lockDialog');
  }
  function unlock(key){
@@ -2154,8 +2152,6 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+'、はじめまして。これからいっしょです。');
   setChar(lockKey);
  };
- const soon=function(){toast('お支払いはまもなく開きます。');};
- $('lockOne').onclick=soon; $('lockAll').onclick=soon;
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){
@@ -2352,7 +2348,7 @@ let order=read('order',null);if(!order||typeof order!=='object'){const d=engine.
 let customChars=read('customChars',{});if(!customChars||typeof customChars!=='object')customChars={};
 let customDraft=null,customFace=1;
 function customMailHref(){const sub=encodeURIComponent(`［PawMinute］キャラクター制作のお申し込み ${order.code}`);const body=encodeURIComponent(`注文番号: ${order.code}\nその子の名前: ${profile.name}\n（写真を1枚添付してください。正面か横顔がはっきり見えるものが向いています。）\n`);return `mailto:${CUSTOM_MAIL}?subject=${sub}&body=${body}`;}
-function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=!ios;$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
+function openCustom(){$('orderCode').textContent=order.code;$('payLink').href=CUSTOM_PAY_URL;$('mailLink').href=customMailHref();const ios=!!window.ReactNativeWebView;$('customPay').hidden=ios;$('customIosNote').hidden=true;document.querySelectorAll('#customDialog .custom-price,#customDialog .custom-steps,#customDialog .custom-lead').forEach(function(el){el.hidden=ios;});$('customName').value='';customDraft=null;$('customPreview').innerHTML='';$('customAdd').disabled=true;renderCustomList();showDialog('customDialog');}
 function renderCustomList(){const keys=Object.keys(customChars);$('customList').innerHTML=keys.length?'<span class="control-label">追加したうちの子</span>'+keys.map(k=>`<div class="row"><img src="${customChars[k].idle[0]}" alt=""><b>${esc(customChars[k].name)}</b><button type="button" data-del-custom="${k}">はずす</button></div>`).join(''):'';}
 $('myCustom').onclick=openCustom;
 $('customPick').onclick=()=>$('customFile').click();

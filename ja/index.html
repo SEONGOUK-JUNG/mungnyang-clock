@@ -26,10 +26,10 @@
 if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) location.replace('/app' + location.search);
 (function(){ try{
   if (location.pathname !== '/') return;
-  if (localStorage.getItem('mn.lang')) return;              // 직접 고른 적이 있으면 그대로
-  var l = (navigator.language || '').toLowerCase();
-  if (l.indexOf('ko') === 0) return;
-  var two = l.slice(0, 2);
+  // 기본은 영어. 한국어는 '한국어'를 직접 고른 사람만 이 페이지에 남는다.
+  var saved = localStorage.getItem('mn.lang');
+  if (saved === 'ko') return;
+  var two = saved || (navigator.language || '').toLowerCase().slice(0, 2);
   location.replace(['ja', 'zh', 'fr', 'es'].indexOf(two) >= 0 ? '/' + two + '/' : '/en/');
 }catch(e){} })();
 </script>
@@ -194,7 +194,7 @@ footer a:hover{color:var(--ink)}
       <a href="#features">できること</a>
       <a href="#desktop">デスクトップ</a>
       <a href="#price">料金</a>
-      <span class="langpick"><a href="/" data-lang="ko">한국어</a><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/fr/" data-lang="fr">FR</a><a href="/es/" data-lang="es">ES</a></span>
+      <span class="langpick"><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/es/" data-lang="es">ES</a><a href="/fr/" data-lang="fr">FR</a><a href="/" data-lang="ko">한국어</a></span>
       <a class="btn small" href="/ja/app">アプリを開く</a>
     </nav>
   </div>

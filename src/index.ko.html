@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6814390453">
+<link rel="canonical" href="https://pawminute.com/ko/">
+<link rel="alternate" hreflang="ko" href="https://pawminute.com/ko/">
+<link rel="alternate" hreflang="en" href="https://pawminute.com/">
+<link rel="alternate" hreflang="ja" href="https://pawminute.com/ja/">
+<link rel="alternate" hreflang="zh" href="https://pawminute.com/zh/">
+<link rel="alternate" hreflang="fr" href="https://pawminute.com/fr/">
+<link rel="alternate" hreflang="es" href="https://pawminute.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://pawminute.com/">
+<meta property="og:url" content="https://pawminute.com/ko/">
+<meta property="og:locale" content="ko_KR">
+<title>멍냥시계 · 사료 알갱이를 미는 반려동물 시계</title>
+<meta name="description" content="강아지·고양이 캐릭터가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞추고, 밥·산책 시간을 챙겨 주는 반려동물 시계. 화상디자인 등록출원 30-2026-0034331.">
+<meta property="og:title" content="멍냥시계">
+<meta property="og:description" content="사료 알갱이를 한 알씩 미는 반려동물 시계. 휴대폰에서도, PC 바탕화면에서도.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pawminute.com/desk-clock.png">
+<meta property="og:image:width" content="640"><meta property="og:image:height" content="640">
+<meta property="og:site_name" content="PawMinute">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pawminute.com/desk-clock.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","@id":"https://pawminute.com/#app","name":"PawMinute","url":"https://pawminute.com/","image":"https://pawminute.com/icons/icon-512.png",
+ "applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android, Windows, Web",
+ "description":"A pet clock where a dog or cat pushes a minute hand made of kibble and reminds you of meal and walk times.",
+ "installUrl":"https://apps.apple.com/app/id6814390453","downloadUrl":"https://apps.apple.com/app/id6814390453",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://pawminute.com/#org"}},
+{"@type":"Organization","@id":"https://pawminute.com/#org","name":"ABRIDGE Co., Ltd.","url":"https://abridge.co.kr/","email":"ceo@abridge.co.kr",
+ "address":{"@type":"PostalAddress","streetAddress":"1F, 21 Bunam-gil 26beon-gil, Buk-gu","addressLocality":"Gwangju","postalCode":"61127","addressCountry":"KR"}}
+]}</script>
+
+<link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/icons/icon-180.png"><link rel="icon" href="/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>/* 홈 화면에 설치해서 연 경우에만 앱으로 바로 */
+if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) location.replace('/app' + location.search);
+(function(){ try{
+  if (location.pathname !== '/') return;            // 대표 주소(영어)에서만 판단
+  // 기본은 영어. 직접 고른 언어가 있으면 그 언어, 없으면 일·중·스·프 브라우저만 그 언어로. 한국어는 직접 고른 사람만.
+  var saved = localStorage.getItem('mn.lang');
+  if (saved === 'en') return;
+  var two = saved || (navigator.language || '').toLowerCase().slice(0, 2);
+  if (saved === 'ko') return location.replace('/ko/' + location.search);
+  if (['ja', 'zh', 'fr', 'es'].indexOf(two) >= 0) location.replace('/' + two + '/' + location.search);
+}catch(e){} })();
+</script>
+<style>
+:root{
+  --bg:#171b16; --bg2:#1e241d; --card:#232b22; --line:#333d31;
+  --ink:#f3f0e4; --muted:#a4ac99; --dim:#7d8574;
+  --kibble:#e2a445; --sage:#a8bb8b; --rust:#c9784f;
+  --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* 머리 */
+.top{position:sticky;top:0;z-index:30;background:rgba(23,27,22,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .mark{width:34px;height:34px;border-radius:12px;background:#65794f;display:grid;place-items:center;transform:rotate(-7deg);flex:none}
+.logo .mark svg{width:22px;height:22px;fill:#fff9e9}
+.logo b{font-family:var(--display);font-size:19px;font-weight:400;letter-spacing:.02em}
+.top nav{display:flex;gap:22px;align-items:center;font-size:13px;color:var(--muted)}
+.top nav a{text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+.langpick{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}
+.langpick a{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:999px;text-decoration:none;color:var(--muted)}
+.langpick a:hover{color:var(--ink)}
+.langpick a[aria-current]{background:var(--kibble);color:#2a1f0c}
+@media (max-width:720px){.langpick a{padding:4px 7px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:14px;font-weight:600;
+  padding:11px 20px;border-radius:999px;border:1px solid transparent;background:var(--kibble);color:#2a1f0c;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--sage);color:var(--sage)}
+.btn.small{padding:8px 15px;font-size:13px}
+.btn[disabled]{background:var(--card);color:var(--dim);cursor:default;border-color:var(--line)}
+@media (max-width:720px){
+  .top nav > a:not(.btn){display:none}
+  .top .wrap{gap:8px}
+  .langpick a{padding:4px 7px;font-size:10px}
+  .btn.small{padding:8px 12px;font-size:12.5px}
+}
+.logo b, .langpick a, .btn{white-space:nowrap}
+@media (max-width:480px){
+  .logo b{display:none}          /* 이름은 첫 화면 제목에 크게 나오므로 머리에서는 마크만 */
+  .wrap{padding:0 18px}
+}
+
+/* 첫 화면 */
+.hero{padding:64px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 392px;gap:56px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--kibble);margin:0 0 18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5.2vw,54px);line-height:1.32;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 mark{background:var(--kibble);color:#2a1f0c;padding:.14em .2em .04em;border-radius:8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lede{margin:20px 0 0;color:var(--muted);font-size:16.5px;max-width:30em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
+.chips span{font-family:var(--mono);font-size:11px;color:var(--sage);border:1px solid var(--line);border-radius:7px;padding:4px 9px}
+
+/* 아이폰 틀 */
+.phone{position:relative;width:392px;height:800px;background:#0d0f0c;border-radius:52px;padding:6px;flex:none;
+  box-shadow:0 40px 90px -40px #000,0 0 0 2px #3a423a,0 0 0 6px #141813;justify-self:center}
+.screen{position:relative;width:380px;height:788px;border-radius:46px;overflow:hidden;background:#f7f6f0}
+.screen iframe{border:0;width:380px;height:788px;display:block}
+.island{position:absolute;left:50%;top:12px;width:104px;height:30px;border-radius:18px;background:#0d0f0c;transform:translateX(-50%);z-index:2}
+.bar{position:absolute;left:50%;bottom:7px;width:126px;height:5px;border-radius:3px;background:#0d0f0c;opacity:.7;transform:translateX(-50%);z-index:2}
+@media (max-height:900px){.hero .wrap{grid-template-columns:minmax(0,1fr) 340px}.phone{transform:scale(.86);transform-origin:top center;margin-bottom:-110px}}
+@media (max-width:960px){
+  .hero{padding:40px 0 24px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .phone{transform:none;margin:0 auto;width:min(100%,392px);height:auto;aspect-ratio:392 / 800}
+  .screen{width:100%;height:100%}
+  .screen iframe{width:100%;height:100%}
+}
+
+/* 구역 공통 */
+section{padding:64px 0}
+.sec-head{margin-bottom:34px}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3.4vw,32px);margin:0;letter-spacing:-.01em}
+.sec-head p{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:34em}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* 기능 */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.feat > div{background:var(--bg2);padding:22px 20px 24px;display:flex;flex-direction:column;gap:6px}
+.feat .no{font-family:var(--mono);font-size:11px;color:var(--kibble)}
+.feat b{font-size:15px;font-weight:600}
+.feat p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.75}
+@media (max-width:880px){.feat{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.feat{grid-template-columns:1fr}}
+
+/* 바탕화면 */
+.desk-sec .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.win{background:linear-gradient(160deg,#2c3a45,#1d262c);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px #000}
+.win-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#161c20;border-bottom:1px solid #2b343a}
+.win-bar i{width:9px;height:9px;border-radius:50%;background:#3f4a51;display:block}
+.win-bar span{font-family:var(--mono);font-size:10px;color:#6b7780;margin-left:8px}
+.win-body{position:relative;height:290px;display:grid;place-items:center;
+  background:radial-gradient(120% 90% at 30% 15%,#3b4d58,#202a31 70%)}
+.win-body img{width:190px;height:190px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+.win-note{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10px;color:#8d99a2}
+.desk-list{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.desk-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--muted)}
+.desk-list b{color:var(--ink);font-weight:600}
+@media (max-width:880px){.desk-sec .wrap{grid-template-columns:1fr;gap:30px}}
+
+/* 값 */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plan{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.plan.lead{border-color:var(--kibble)}
+.plan .tag{font-family:var(--mono);font-size:11px;color:var(--kibble);letter-spacing:.08em}
+.plan .price{font-family:var(--sans);font-size:27px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:12px;color:var(--muted);font-weight:400}
+.plan p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.75;flex:1}
+.plan .btn{width:100%;margin-top:4px}
+@media (max-width:880px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.plans{grid-template-columns:1fr}}
+.mission{margin-top:16px;border:1px dashed var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.mission b{font-size:15px}
+.mission span{color:var(--muted);font-size:14px}
+.mission em{font-style:normal;color:var(--sage);font-weight:600}
+
+/* 출원 */
+.ipnote{padding-top:8px !important;padding-bottom:8px !important}
+.notice{border-left:3px solid var(--rust);background:#241d18;border-radius:0 14px 14px 0;padding:18px 20px}
+.notice b{display:block;margin-bottom:4px}
+.notice p{margin:0;color:var(--muted);font-size:14px}
+
+/* 꼬리 */
+footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+footer a{color:var(--muted);text-decoration:none;margin-right:16px}
+footer a:hover{color:var(--ink)}
+
+/* 안내 창 */
+.sheet{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(8,10,8,.68);z-index:1000;padding:20px}
+.sheet.on{display:flex}
+.sheet .card{background:var(--card);border:1px solid var(--line);border-radius:20px;max-width:420px;width:100%;padding:24px;max-height:86vh;overflow:auto}
+.sheet h3{font-family:var(--display);font-weight:400;font-size:20px;margin:0 0 4px}
+.sheet h4{margin:18px 0 6px;font-size:13px;color:var(--kibble);font-family:var(--mono);letter-spacing:.06em}
+.sheet ol{margin:0;padding-left:19px;font-size:14px;line-height:1.85;color:var(--muted)}
+.sheet ol b{color:var(--ink);font-weight:600}
+.sheet .close{margin-top:20px;width:100%}
+.sheet .note{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 14px}
+[hidden]{display:none !important}
+.buy{margin-top:4px;min-height:44px;position:relative;z-index:0;isolation:isolate}
+.buy .paypal{width:100%}
+.buy small{display:block;margin-top:6px;color:var(--dim);font-size:11.5px}
+.seller{color:var(--dim);font-size:12px;line-height:1.8;margin-top:10px}
+.code-box{font-family:var(--mono);font-size:22px;letter-spacing:.08em;text-align:center;padding:14px;border:1px dashed var(--kibble);border-radius:12px;margin:12px 0;user-select:all}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 13.5C8 11 10 10 12 10s4 1 5.5 3.5c1.7 2.8.8 5.5-1.5 5.5-1.8 0-2.4-1-4-1s-2.2 1-4 1c-2.3 0-3.2-2.7-1.5-5.5Z"/><ellipse cx="4" cy="9" rx="2" ry="3"/><ellipse cx="9" cy="5" rx="2" ry="3"/><ellipse cx="15" cy="5" rx="2" ry="3"/><ellipse cx="20" cy="9" rx="2" ry="3"/></svg></span><b>멍냥시계</b></a>
+    <nav>
+      <a href="#features">기능</a>
+      <a href="#desktop">바탕화면</a>
+      <a href="#price">가격</a>
+      <span class="langpick"><a href="/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/es/" data-lang="es">ES</a><a href="/fr/" data-lang="fr">FR</a><a href="/ko/" data-lang="ko">한국어</a></span>
+      <a class="btn small" href="/app">앱 열어 보기</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">LITTLE PAWS, LOVELY DAYS</p>
+      <h1>사료 알갱이를 한 알씩 미는<br><mark>반려동물 시계</mark></h1>
+      <p class="lede">강아지와 고양이가 사료 알갱이로 된 분침을 한 알씩 밀어 시간을 맞춥니다.
+        밥때가 되면 그릇 앞에서 기다리고, 산책 시간에는 문 앞에서 기다립니다.
+        휴대폰에서도, PC 바탕화면에서도 같은 아이가 함께 지냅니다.</p>
+      <div class="hero-cta">
+        <a class="btn" id="iosGet" href="https://apps.apple.com/app/id6814390453">App Store에서 받기</a>
+        <button class="btn" type="button" id="androidInstall" hidden>안드로이드에 설치</button>
+        <a class="btn ghost" href="/app">앱 열어 보기</a>
+        <button class="btn ghost" type="button" data-open="deskSheet">PC 바탕화면 시계 받기</button>
+      </div>
+      <div class="chips">
+        <span>캐릭터 79종</span><span>사료 분침 8알</span><span>밥·산책 알림</span>
+        <span>함께 밀기 넷까지</span><span>기기 안에만 저장</span><span>디자인 출원 30-2026-0034331</span>
+      </div>
+    </div>
+    <div class="phone"><div class="screen"><div class="island"></div><iframe src="/app?char=corgi" title="멍냥시계 앱 화면" loading="eager"></iframe><div class="bar"></div></div></div>
+  </div>
+</div>
+
+<section class="ipnote">
+  <div class="wrap">
+    <div class="notice">
+      <b>화상디자인 등록출원 30-2026-0034331</b>
+      <p>사료 알갱이가 분침이 되고 반려동물이 그것을 미는 이 시계의 화상디자인은 2026년 9월 8일 대한민국 지식재산처에 출원되었습니다. 무단 복제와 모방을 금지합니다.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>멍냥시계가 하는 일</h2>
+      <p>시간을 보여 주는 일보다, 오늘 아이와 무엇을 했는지 챙기는 일을 더 많이 합니다.</p>
+    </div>
+    <div class="feat">
+      <div><span class="no">01</span><b>한 알씩 미는 분침</b><p>분침이 사료 알갱이 여덟 알입니다. 1분이 지날 때마다 걸어가 한 알을 밀어 놓습니다.</p></div>
+      <div><span class="no">02</span><b>캐릭터 79종</b><p>강아지와 고양이 품종, 그림 멍냥이, 기타 친구들. 처음에는 코기와 벵갈 중 하나로 시작합니다.</p></div>
+      <div><span class="no">03</span><b>넷이 함께 밀기</b><p>친구를 넷까지 불러 함께 밀 수 있습니다. 각자 이름을 붙여 줄 수 있어요.</p></div>
+      <div><span class="no">04</span><b>밥때를 압니다</b><p>정한 시각이 되면 그릇 앞으로 걸어가 기다립니다. 다 주고 나면 밥 줬어요를 눌러 주세요.</p></div>
+      <div><span class="no">05</span><b>산책 타이머</b><p>다녀오기 전에 시작을 누르고, 돌아와 끝을 누르면 오늘 기록에 남습니다.</p></div>
+      <div><span class="no">06</span><b>고양이는 놀아주기</b><p>대표 아이가 고양이면 산책 대신 놀아주기로 바뀝니다. 기록도 함께 놀기로 세요.</p></div>
+      <div><span class="no">07</span><b>쓰다듬기</b><p>캐릭터 위에서 손을 문지르면 하트가 올라오고 고롱고롱거립니다.</p></div>
+      <div><span class="no">08</span><b>밤에는 잠자기</b><p>밤 10시부터 아침 7시까지는 시계판 아래에서 웅크리고 잡니다.</p></div>
+      <div><span class="no">09</span><b>시계가 머무는 곳</b><p>러그, 잔디, 나무, 미니멀, 밤. 다섯 가지 시계판 중에 고릅니다.</p></div>
+      <div><span class="no">10</span><b>어두운 화면</b><p>밝은 화면과 어두운 화면을 오갑니다. 밤에 눈이 부시지 않게.</p></div>
+      <div><span class="no">11</span><b>우리 아이 정보</b><p>이름, 생일, 사진을 넣어 둡니다. 생일에는 고깔을 씁니다.</p></div>
+      <div><span class="no">12</span><b>주간 기록</b><p>이번 주 밥과 산책을 며칠이나 지켰는지 한눈에 보여 줍니다.</p></div>
+      <div><span class="no">13</span><b>PC 바탕화면 시계</b><p>윈도우 바탕화면 위에 떠서 같은 아이가 시간을 맞춥니다. 원 바깥은 마우스가 통과합니다.</p></div>
+      <div><span class="no">14</span><b>크기 조절</b><p>바탕화면 시계는 손잡이를 끌거나 휠을 굴려 크기를 바꿉니다.</p></div>
+      <div><span class="no">15</span><b>방해 금지</b><p>전체 화면으로 영상을 보면 시계가 저절로 흐려지고 뒤로 물러납니다.</p></div>
+      <div><span class="no">16</span><b>쉬는 시간 알림</b><p>물 마시기와 스트레칭을 정한 간격마다 알려 줍니다. 아이도 챙기고 주인도 챙깁니다.</p></div>
+      <div><span class="no">17</span><b>홈 화면에 추가</b><p>휴대폰 브라우저에서 홈 화면에 추가하면 발바닥 아이콘으로 앱처럼 열립니다.</p></div>
+      <div><span class="no">18</span><b>기기 안에만 저장</b><p>계정이 없습니다. 일정과 기록은 이 기기 안에만 남고 어디로도 보내지 않습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="desktop" class="desk-sec">
+  <div class="wrap">
+    <div>
+      <div class="sec-head">
+        <h2>바탕화면 위에서도 함께 지냅니다</h2>
+        <p>윈도우용 시계를 따로 만들었습니다. 창 테두리 없이 바탕화면 위에 떠 있고,
+          시계 원 바깥은 마우스가 통과해 하던 일을 그대로 할 수 있습니다.</p>
+      </div>
+      <ul class="desk-list">
+        <li><b>끌기</b><span>원하는 자리에 놓으면 그 자리를 기억합니다.</span></li>
+        <li><b>크기</b><span>마우스를 올리면 나오는 손잡이를 끌거나 휠을 굴립니다.</span></li>
+        <li><b>두 번 누르기</b><span>일정·꾸미기·기록 창이 열립니다. 휴대폰 앱과 같은 화면입니다.</span></li>
+        <li><b>알림</b><span>밥·산책 시간에 윈도우 알림이 뜹니다.</span></li>
+      </ul>
+      <div class="hero-cta"><button class="btn" type="button" data-open="deskSheet">받는 법 보기</button></div>
+    </div>
+    <div class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span>~/desktop</span></div>
+      <div class="win-body"><img src="/desk-clock.png" alt="바탕화면 위에 떠 있는 멍냥시계" width="190" height="190">
+        <span class="win-note">윈도우 10 · 11</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>가격</h2>
+      <p>시작은 무료입니다. 아이와 보낸 시간으로 친구를 데려올 수도 있고, 사서 데려올 수도 있습니다.</p>
+    </div>
+    <div class="plans">
+      <div class="plan lead">
+        <span class="tag">START</span>
+        <div class="price">무료</div>
+        <p>코기와 벵갈 중 한 친구를 골라 시작합니다. 시계와 일정, 기록은 전부 그대로 씁니다.</p>
+        <a class="btn" href="/app">지금 시작하기</a>
+      </div>
+      <div class="plan">
+        <span class="tag">ONE</span>
+        <div class="price">6,500원 <small>/ 한 친구</small></div>
+        <p>마음에 드는 친구를 하나 골라 데려옵니다. 한 번 데려오면 계속 함께합니다.</p>
+        <div class="buy" data-sku="ONE"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
+      </div>
+      <div class="plan">
+        <span class="tag">ALL</span>
+        <div class="price">65,000원 <small>/ 전부</small></div>
+        <p>79종 전부를 엽니다. 앞으로 더해지는 친구들도 함께 열립니다.</p>
+        <div class="buy" data-sku="ALL"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
+      </div>
+      <div class="plan">
+        <span class="tag">CUSTOM</span>
+        <div class="price">130,000원 <small>/ 우리 아이</small></div>
+        <p>우리 아이 사진을 보내 주시면 그 아이를 캐릭터로 만들어 넣어 드립니다.</p>
+        <div class="buy" data-sku="CUSTOM"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
+      </div>
+    </div>
+    <div class="mission">
+      <b>사지 않고 얻는 길</b>
+      <span>하루 <em>30분</em> 이상 산책하거나 놀아 주기를 <em>7일</em>을 채우면, 새 친구 교환권을 한 장 받습니다. 하루쯤 빠져도 이어집니다.</span>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="/app">앱 열어 보기</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/support">지원</a>
+      <a href="#" data-open="howtoSheet">홈 화면에 추가</a>
+    </div>
+    <div>© 2026 주식회사 에이브릿지 · 멍냥시계</div>
+  </div>
+  <div class="wrap seller">
+    판매자 주식회사 에이브릿지(ABRIDGE) · 대표 이세아 · 사업자등록번호 689-88-03550 · 통신판매업신고 제2025-광주북구-0992호<br>
+    광주광역시 북구 부남길26번길 21, 1층 · <a href="mailto:ceo@abridge.co.kr">ceo@abridge.co.kr</a>
+  </div>
+</footer>
+
+<div class="sheet" id="deskSheet">
+  <div class="card">
+    <h3>PC 바탕화면 시계</h3>
+    <p class="note">윈도우 10 · 11 (64비트) · 약 110MB</p>
+    <a class="btn" id="deskGet" href="#" style="width:100%;margin-bottom:16px">내려받는 곳 준비 중</a>
+    <h4>설치</h4>
+    <ol>
+      <li><b>받은 파일을 두 번 누릅니다.</b></li>
+      <li><b>파란 창이 뜨면 추가 정보 → 실행.</b> 처음 보는 프로그램이라 뜨는 창입니다. 작은 글씨의 추가 정보를 눌러야 실행 단추가 나옵니다.</li>
+      <li><b>설치 위치는 그대로 두고 설치.</b> 관리자 권한이 필요 없습니다.</li>
+      <li><b>화면 오른쪽 아래에 시계가 나타납니다.</b> 작업 표시줄 오른쪽에 발바닥 아이콘도 생깁니다.</li>
+    </ol>
+    <h4>쓰는 법</h4>
+    <ol>
+      <li>끌어서 옮깁니다. 위치는 기억됩니다.</li>
+      <li>마우스를 올리면 나오는 손잡이를 끌거나 휠을 굴려 크기를 바꿉니다.</li>
+      <li>멍냥이 위에서 문지르면 하트가 올라옵니다.</li>
+      <li>두 번 누르면 일정·꾸미기·기록 창이 열립니다.</li>
+      <li>전체 화면으로 영상을 보면 시계가 저절로 물러납니다.</li>
+    </ol>
+    <button class="btn ghost close" type="button" data-close>알겠어요</button>
+  </div>
+</div>
+
+<div class="sheet" id="howtoSheet">
+  <div class="card">
+    <h3>홈 화면에 추가하기</h3>
+    <h4>아이폰 · 아이패드 (사파리)</h4>
+    <ol><li>아래 가운데 <b>공유 버튼</b>(위로 향한 화살표)</li><li>목록을 내려 <b>홈 화면에 추가</b></li><li>오른쪽 위 <b>추가</b></li></ol>
+    <h4>안드로이드 (크롬)</h4>
+    <ol><li>오른쪽 위 <b>⋮</b></li><li><b>홈 화면에 추가</b> 또는 <b>앱 설치</b></li><li><b>설치</b></li></ol>
+    <h4>PC (크롬 · 엣지)</h4>
+    <ol><li>주소창 오른쪽 끝 <b>설치 아이콘</b></li><li>없으면 <b>⋮</b> → <b>앱</b> → <b>이 사이트를 앱으로 설치</b></li></ol>
+    <button class="btn ghost close" type="button" data-close>알겠어요</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var URL_DESK = 'https://github.com/SEONGOUK-JUNG/mungnyang-clock/releases/download/desktop-v1.4.1/MungnyangClock-Setup-1.4.1.exe';
+  var get = document.getElementById('deskGet');
+  if (URL_DESK) { get.href = URL_DESK; get.textContent = '내려받기'; }
+  else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }
+
+  var here = (location.pathname.match(/^\/(ko|ja|zh|fr|es)(\/|$)/) || [0, 'en'])[1];
+  document.querySelectorAll('.langpick a').forEach(function(a){
+    if (a.dataset.lang === here) a.setAttribute('aria-current', 'page');
+    a.addEventListener('click', function(){ try{ localStorage.setItem('mn.lang', a.dataset.lang); }catch(e){} });
+  });
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); document.getElementById(b.dataset.open).classList.add('on'); });
+  });
+  document.querySelectorAll('.sheet').forEach(function(s){
+    s.addEventListener('click', function(e){ if (e.target === s || e.target.hasAttribute('data-close')) s.classList.remove('on'); });
+  });
+  addEventListener('keydown', function(e){
+    if (e.key === 'Escape') document.querySelectorAll('.sheet.on').forEach(function(s){ s.classList.remove('on'); });
+  });
+})();
+</script>
+<div class="sheet" id="buySheet">
+  <div class="card">
+    <h3 id="buyTitle">결제가 끝났어요</h3>
+    <p class="note" id="buyNote"></p>
+    <div class="code-box" id="buyCode" hidden></div>
+    <a class="btn" id="buyOpen" href="/app" hidden>앱에서 바로 열기</a>
+    <p class="note" id="buyHint"></p>
+    <button class="btn ghost close" type="button" data-close>닫기</button>
+  </div>
+</div>
+
+<script>
+/* 결제: 한국어판은 페이앱 링크, 영문·일본어판은 PayPal (PayPal 은 한국 구매자 결제를 받지 않는다) */
+(function(){
+  var PAYAPP = { ONE: 'https://www.payapp.kr/L/z4maC7', ALL: 'https://www.payapp.kr/L/z4maDF', CUSTOM: 'https://www.payapp.kr/L/z4maG2' };   // 페이앱 결제 링크 (2026-10-13)
+  var lang = (location.pathname.match(/^\/(ko|ja|zh|fr|es)(\/|$)/) || [0, 'en'])[1];
+  var boxes = document.querySelectorAll('.buy[data-sku]');
+  var $ = function(id){ return document.getElementById(id); };
+  var appUrl = lang === 'ko' ? '/app' : '/' + lang + '/app';
+
+  function show(r){
+    $('buyCode').hidden = !r.code; $('buyOpen').hidden = !r.code;
+    if (r.code) {
+      $('buyTitle').textContent = '결제가 끝났어요';
+      $('buyNote').textContent = '아래 구매 코드를 적어 두세요. 이 코드로 친구를 데려옵니다.';
+      $('buyCode').textContent = r.code;
+      $('buyOpen').href = appUrl + '?code=' + encodeURIComponent(r.code);
+      $('buyHint').textContent = (r.sku === 'ALL' ? '모든 친구가 열립니다. 기기 5대까지 같은 코드를 쓸 수 있어요.' : '교환권 한 장이 들어옵니다. 마음에 드는 친구를 골라 데려오세요.')
+        + ' PC 바탕화면 시계에서는 잠긴 친구를 누른 뒤 코드를 넣으면 됩니다.';
+    } else {
+      $('buyTitle').textContent = '주문을 받았어요';
+      $('buyNote').textContent = '주문번호 ' + r.order;
+      $('buyHint').textContent = '우리 아이 사진 몇 장과 이름, 주문번호를 ceo@abridge.co.kr 로 보내 주세요. 만들어지면 메일로 알려 드립니다.';
+    }
+    $('buySheet').classList.add('on');
+    try { localStorage.setItem('mn.lastCode', JSON.stringify(r)); } catch(e){}
+  }
+
+  if (lang === 'ko') {
+    boxes.forEach(function(b){
+      var url = PAYAPP[b.dataset.sku];
+      var tip = b.dataset.sku === 'CUSTOM' ? '결제 후 우리 아이 사진과 이름을 ceo@abridge.co.kr 로 보내 주세요.' : '결제 후 구매 코드를 문자로 보내 드립니다.';
+      if (url) b.innerHTML = '<a class="btn" href="' + url + '" target="_blank" rel="noopener">결제하기</a><small>' + tip + '</small>';
+    });
+    return;
+  }
+
+  fetch('/api/config').then(function(r){ return r.json(); }).then(function(cfg){
+    if (!cfg.clientId) return;
+    var sc = document.createElement('script');
+    sc.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) + '&currency=USD&intent=capture&components=buttons&locale=' + ({ ja: 'ja_JP', zh: 'zh_CN', fr: 'fr_FR', es: 'es_ES' }[lang] || 'en_US');   // 버튼 글자를 브라우저가 아니라 페이지 언어로
+    sc.onload = function(){
+      boxes.forEach(function(b){
+        var sku = b.dataset.sku;
+        b.innerHTML = '<div class="paypal"></div>' + (cfg.env === 'live' ? '' : '<small>테스트 결제(샌드박스)</small>');
+        paypal.Buttons({
+          style: { layout: 'vertical', shape: 'pill', label: 'pay', height: 40 },
+          createOrder: function(){
+            return fetch('/api/paypal/create', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sku: sku }) })
+              .then(function(r){ return r.json(); }).then(function(o){ if (!o.id) throw new Error('create'); return o.id; });
+          },
+          onApprove: function(d){
+            return fetch('/api/paypal/capture', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ orderID: d.orderID }) })
+              .then(function(r){ return r.json(); }).then(function(r){ if (r.error) throw new Error(r.error); show(r); });
+          },
+          onError: function(){ alert('결제를 마치지 못했어요. 잠시 뒤 다시 해 주세요.'); }
+        }).render(b.querySelector('.paypal'));
+      });
+    };
+    document.head.appendChild(sc);
+  }).catch(function(){});
+})();
+</script>
+<script>
+/* 안드로이드: 구글 플레이 없이 이 사이트를 앱으로 설치 (크롬의 설치 창). 설치 창이 안 뜨는 브라우저는 안내 창으로 */
+(function(){
+  if (!/Android/i.test(navigator.userAgent)) return;
+  var btn = document.getElementById('androidInstall'), ios = document.getElementById('iosGet'), ask = null;
+  if (ios) ios.hidden = true;
+  btn.hidden = false;
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ask = e; });
+  addEventListener('appinstalled', function(){ btn.textContent = '설치했어요 · 앱 목록에서 열기'; ask = null; });
+  btn.addEventListener('click', function(){
+    if (ask) { ask.prompt(); ask.userChoice.then(function(){ ask = null; }); }
+    else document.getElementById('howtoSheet').classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>

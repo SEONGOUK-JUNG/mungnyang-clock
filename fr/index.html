@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6814390453">
 <link rel="canonical" href="https://pawminute.com/fr/">
-<link rel="alternate" hreflang="ko" href="https://pawminute.com/">
-<link rel="alternate" hreflang="en" href="https://pawminute.com/en/">
+<link rel="alternate" hreflang="ko" href="https://pawminute.com/ko/">
+<link rel="alternate" hreflang="en" href="https://pawminute.com/">
 <link rel="alternate" hreflang="ja" href="https://pawminute.com/ja/">
 <link rel="alternate" hreflang="zh" href="https://pawminute.com/zh/">
 <link rel="alternate" hreflang="fr" href="https://pawminute.com/fr/">
 <link rel="alternate" hreflang="es" href="https://pawminute.com/es/">
-<link rel="alternate" hreflang="x-default" href="https://pawminute.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://pawminute.com/">
 <meta property="og:url" content="https://pawminute.com/fr/">
 <meta property="og:locale" content="fr_FR">
 <title>PawMinute · l’horloge pour animaux à aiguille de croquettes</title>
@@ -19,18 +19,34 @@
 <meta property="og:title" content="PawMinute">
 <meta property="og:description" content="Une horloge pour animaux dont l’aiguille des minutes se pousse croquette par croquette. Sur votre téléphone et sur votre bureau.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://pawminute.com/desk-clock.png">
+<meta property="og:image:width" content="640"><meta property="og:image:height" content="640">
+<meta property="og:site_name" content="PawMinute">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pawminute.com/desk-clock.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","@id":"https://pawminute.com/#app","name":"PawMinute","url":"https://pawminute.com/","image":"https://pawminute.com/icons/icon-512.png",
+ "applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android, Windows, Web",
+ "description":"A pet clock where a dog or cat pushes a minute hand made of kibble and reminds you of meal and walk times.",
+ "installUrl":"https://apps.apple.com/app/id6814390453","downloadUrl":"https://apps.apple.com/app/id6814390453",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://pawminute.com/#org"}},
+{"@type":"Organization","@id":"https://pawminute.com/#org","name":"ABRIDGE Co., Ltd.","url":"https://abridge.co.kr/","email":"ceo@abridge.co.kr",
+ "address":{"@type":"PostalAddress","streetAddress":"1F, 21 Bunam-gil 26beon-gil, Buk-gu","addressLocality":"Gwangju","postalCode":"61127","addressCountry":"KR"}}
+]}</script>
+
 <link rel="manifest" href="/manifest-fr.json"><link rel="apple-touch-icon" href="/icons/icon-180.png"><link rel="icon" href="/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <script>/* 홈 화면에 Installation해서 연 경우에만 Apps으로 바로 */
 if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) location.replace('/app' + location.search);
 (function(){ try{
-  if (location.pathname !== '/') return;
-  // 기본은 영어. 한국어는 '한국어'를 직접 고른 사람만 이 페이지에 남는다.
+  if (location.pathname !== '/') return;            // 대표 주소(영어)에서만 판단
+  // 기본은 영어. 직접 고른 언어가 있으면 그 언어, S’il n’y en a pas, 일·중·스·프 브라우저만 그 언어로. 한국어는 직접 고른 사람만.
   var saved = localStorage.getItem('mn.lang');
-  if (saved === 'ko') return;
+  if (saved === 'en') return;
   var two = saved || (navigator.language || '').toLowerCase().slice(0, 2);
-  location.replace(['ja', 'zh', 'fr', 'es'].indexOf(two) >= 0 ? '/' + two + '/' : '/en/');
+  if (saved === 'ko') return location.replace('/ko/' + location.search);
+  if (['ja', 'zh', 'fr', 'es'].indexOf(two) >= 0) location.replace('/' + two + '/' + location.search);
 }catch(e){} })();
 </script>
 <style>
@@ -157,6 +173,7 @@ section{padding:64px 0}
 .mission em{font-style:normal;color:var(--sage);font-weight:600}
 
 /* 출원 */
+.ipnote{padding-top:8px !important;padding-bottom:8px !important}
 .notice{border-left:3px solid var(--rust);background:#241d18;border-radius:0 14px 14px 0;padding:18px 20px}
 .notice b{display:block;margin-bottom:4px}
 .notice p{margin:0;color:var(--muted);font-size:14px}
@@ -194,7 +211,7 @@ footer a:hover{color:var(--ink)}
       <a href="#features">Fonctions</a>
       <a href="#desktop">Bureau</a>
       <a href="#price">Tarifs</a>
-      <span class="langpick"><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/es/" data-lang="es">ES</a><a href="/fr/" data-lang="fr">FR</a><a href="/" data-lang="ko">한국어</a></span>
+      <span class="langpick"><a href="/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/es/" data-lang="es">ES</a><a href="/fr/" data-lang="fr">FR</a><a href="/ko/" data-lang="ko">한국어</a></span>
       <a class="btn small" href="/fr/app">Ouvrir l’app</a>
     </nav>
   </div>
@@ -222,6 +239,15 @@ footer a:hover{color:var(--ink)}
     <div class="phone"><div class="screen"><div class="island"></div><iframe src="/fr/app?char=corgi" title="L’écran de l’app PawMinute" loading="eager"></iframe><div class="bar"></div></div></div>
   </div>
 </div>
+
+<section class="ipnote">
+  <div class="wrap">
+    <div class="notice">
+      <b>Dépôt de dessin 30-2026-0034331</b>
+      <p>Le design d’écran de cette horloge, où les croquettes deviennent l’aiguille des minutes qu’un animal pousse, a été déposé auprès de l’Office coréen de la propriété intellectuelle le 8 septembre 2026. Toute copie ou imitation est interdite.</p>
+    </div>
+  </div>
+</section>
 
 <hr class="rule">
 
@@ -321,16 +347,7 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<hr class="rule">
 
-<section>
-  <div class="wrap">
-    <div class="notice">
-      <b>Dépôt de dessin 30-2026-0034331</b>
-      <p>Le design d’écran de cette horloge, où les croquettes deviennent l’aiguille des minutes qu’un animal pousse, a été déposé auprès de l’Office coréen de la propriété intellectuelle le 8 septembre 2026. Toute copie ou imitation est interdite.</p>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
@@ -392,7 +409,7 @@ footer a:hover{color:var(--ink)}
   if (URL_DESK) { get.href = URL_DESK; get.textContent = 'Télécharger'; }
   else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }
 
-  var here = (location.pathname.match(/^\/(en|ja|zh|fr|es)(\/|$)/) || [0, 'ko'])[1];
+  var here = (location.pathname.match(/^\/(ko|ja|zh|fr|es)(\/|$)/) || [0, 'en'])[1];
   document.querySelectorAll('.langpick a').forEach(function(a){
     if (a.dataset.lang === here) a.setAttribute('aria-current', 'page');
     a.addEventListener('click', function(){ try{ localStorage.setItem('mn.lang', a.dataset.lang); }catch(e){} });
@@ -423,7 +440,7 @@ footer a:hover{color:var(--ink)}
 /* 결제: 한국어판은 페이Apps 링크, 영문·일본어판은 PayPal (PayPal 은 한국 구매자 결제를 받지 않는다) */
 (function(){
   var PAYAPP = { ONE: 'https://www.payapp.kr/L/z4maC7', ALL: 'https://www.payapp.kr/L/z4maDF', CUSTOM: 'https://www.payapp.kr/L/z4maG2' };   // 페이Apps 결제 링크 (2026-10-13)
-  var lang = (location.pathname.match(/^\/(en|ja|zh|fr|es)(\/|$)/) || [0, 'ko'])[1];
+  var lang = (location.pathname.match(/^\/(ko|ja|zh|fr|es)(\/|$)/) || [0, 'en'])[1];
   var boxes = document.querySelectorAll('.buy[data-sku]');
   var $ = function(id){ return document.getElementById(id); };
   var appUrl = lang === 'ko' ? '/app' : '/' + lang + '/app';

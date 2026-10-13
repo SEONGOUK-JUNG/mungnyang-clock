@@ -2193,7 +2193,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
  }
  $('lockCodeBtn').onclick=function(){redeem($('lockCodeIn').value);$('lockCodeIn').value='';};
  $('lockCodeIn').onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();$('lockCodeBtn').click();}};
- (function(){const l=document.documentElement.lang;$('lockShop').href='https://pawminute.com/'+(l&&l!=='ko'?l+'/':'')+'#price';})();
+ (function(){const l=document.documentElement.lang||'en';$('lockShop').href='https://pawminute.com/'+(l==='en'?'':l+'/')+'#price';})();   // 영어판 = / , 한국어판 = /ko/
  // 결제 직후 "앱에서 바로 열기"(/app?code=…)로 들어온 경우
  try{const c=new URLSearchParams(location.search).get('code');if(c&&SHOP)setTimeout(()=>redeem(c),900);}catch(e){}
 

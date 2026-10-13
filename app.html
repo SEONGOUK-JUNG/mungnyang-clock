@@ -258,7 +258,18 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="lock-mission" id="lockMission"></div>
 <div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>교환권으로 데려오기</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
+<div class="lock-code" id="lockCodeBox" hidden>
+<a id="lockShop" href="https://pawminute.com/#price" target="_blank" rel="noopener">사서 데려오기 →</a>
+<div class="lock-code-row"><input id="lockCodeIn" placeholder="구매 코드 PAW-XXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="13"><button type="button" class="primary-btn" id="lockCodeBtn">코드 넣기</button></div>
+</div>
 </form></dialog>
+<style>
+.lock-code{margin-top:14px;padding-top:12px;border-top:1px solid rgba(127,127,127,.25)}
+.lock-code a{font-size:13px;text-decoration:none;font-weight:600}
+.lock-code-row{display:flex;gap:8px;margin-top:10px}
+.lock-code-row input{flex:1;min-width:0;font:inherit;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:10px 12px;border-radius:12px;border:1px solid rgba(127,127,127,.35);background:transparent;color:inherit}
+.lock-code-row .primary-btn{white-space:nowrap}
+</style>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <dialog class="modal" id="scheduleDialog" aria-labelledby="scheduleDialogTitle"><form id="scheduleForm"><div class="modal-title"><h2 id="scheduleDialogTitle">작은 약속 추가</h2><button type="button" class="icon-btn" data-close="scheduleDialog" aria-label="닫기"><svg class="icon"><use href="#i-close"/></svg></button></div><label class="field"><span>일정 이름</span><input id="eventName" required maxlength="30" placeholder="예: 저녁 산책"></label><div class="form-grid"><label class="field"><span>시간</span><input type="time" id="eventTime" required></label><label class="field"><span>종류</span><select id="eventKind"><option value="meal">밥</option><option value="snack">간식</option><option value="walk">산책</option><option value="med">약</option><option value="play">놀이</option><option value="bath">목욕</option><option value="vet">병원</option><option value="etc">기타</option></select></label></div><label class="field"><span>반복</span><select id="eventRepeat"><option value="daily">매일</option><option value="weekly">매주</option><option value="monthly">매월</option><option value="yearly">매년</option><option value="once">한 번만</option></select></label><div class="field" id="weekdayField" hidden><span>요일 선택</span><div class="days-select" id="weekdaySelect"></div></div><label class="field" id="eventDateField" hidden><span id="eventDateLabel">날짜</span><input type="date" id="eventDate"></label><label class="field" id="eventWhoField"><span>담당 멍냥이</span><select id="eventWho"></select></label><div class="modal-actions"><button type="button" class="danger-btn" id="deleteEvent" hidden>삭제</button><button type="button" class="secondary-btn" id="previewEvent">지금 연출</button><button type="submit" class="primary-btn">저장</button></div></form></dialog>
 <dialog class="modal" id="profileDialog" aria-labelledby="profileDialogTitle"><form id="profileForm"><div class="modal-title"><h2 id="profileDialogTitle">우리 멍냥이</h2><button type="button" class="icon-btn" data-close="profileDialog" aria-label="닫기"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="photo-edit"><div class="photo-preview" id="photoPreview"></div><button type="button" class="secondary-btn" id="choosePhoto">사진 고르기</button><input id="photoFile" type="file" accept="image/*" hidden><button type="button" class="text-btn" id="removePhoto">사진 지우기</button></div><label class="field"><span>이름</span><input id="petName" maxlength="12" required placeholder="코코"></label><label class="field"><span>생일 <small style="font-weight:400;color:var(--muted)">선택</small></span><input id="petBirth" type="date"></label><p class="small-note">생일에는 고깔모자와 작은 케이크로 축하해요.</p><div class="photo-purpose"><strong>사진과 캐릭터</strong>여기서 고른 사진은 프로필에 표시돼요. 사진 속 반려동물을 닮은 캐릭터로 다시 그리는 자동 AI 기능은 이 파일에 포함되어 있지 않아요. 별도로 완성한 캐릭터 그림은 HTML에 넣어 사용할 수 있어요.</div><div class="modal-actions"><button type="submit" class="primary-btn">저장</button></div></form></dialog>
@@ -2043,7 +2054,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 기록을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(코기·벵갈)
- const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // 하루 15분 · 3일이면 교환권 한 장 (하루쯤 빠져도 이어 준다)
+ const NEED_MIN=30, NEED_DAYS=7, GRACE=1;      // 하루 30분 · 7일이면 교환권 한 장 (하루쯤 빠져도 이어 준다) — 소개 페이지 가격표와 같게 (2026-10-13)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2135,6 +2146,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockMission').innerHTML='<div class="mission-top"><b>채운 날 '+n+'일 / '+NEED_DAYS+'일</b><span>오늘 '+today+'분 / '+NEED_MIN+'분</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>하루 '+NEED_MIN+'분 이상 산책하거나 놀아 주기를 '+NEED_DAYS+'일 채우면 교환권 한 장을 받아요. 하루쯤 빠져도 이어집니다.</small>';
+  $('lockCodeBox').hidden=!SHOP;
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='교환권으로 데려오기 ('+tickets+'장)';
   $('lockNote').textContent=(tickets>0?'교환권 '+tickets+'장이 있어요. 한 번 데려오면 계속 함께합니다.':'미션을 끝내면 교환권을 한 장 받아요.');
   showDialog('lockDialog');
@@ -2152,6 +2164,38 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+', 반가워! 이제 함께할 수 있어요.');
   setChar(lockKey);
  };
+
+ /* ── 구매 코드: 웹·PC 시계에서만 (아이폰 앱은 애플 결제 규정 때문에 숨긴다) ──
+    ONE = 교환권 한 장, ALL = 전부 열기. 코드 확인은 pawminute.com/api/redeem (기기 수 제한은 서버가 센다) */
+ const SHOP=!window.ReactNativeWebView;
+ const dev=(function(){let d=rd('dev','');if(!d){d=Math.random().toString(36).slice(2)+Date.now().toString(36);wr('dev',d);}return d;})();
+ const usedCodes=rd('codes',[]);
+ function redeem(code){
+  code=String(code||'').trim().toUpperCase();
+  if(!/^PAW-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)){toast('구매 코드를 다시 확인해 주세요.');return;}
+  if(usedCodes.indexOf(code)>=0){toast('이미 넣은 코드예요.');return;}
+  fetch('https://pawminute.com/api/redeem',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,dev:dev})})
+   .then(r=>r.json().then(j=>({ok:r.ok,status:r.status,j:j})))
+   .then(function(x){
+    if(!x.ok){toast(x.status===409?'이 코드는 이미 다른 기기에서 썼어요.':'코드를 찾지 못했어요.');return;}
+    usedCodes.push(code); wr('codes',usedCodes);
+    if(x.j.sku==='ALL'){
+     allOpen=1; wr('allunlock',1);
+     renderBreedGrid(); if(typeof renderMemberGrid==='function') renderMemberGrid();
+     try{$('lockDialog').close();}catch(e){}
+     toast('모든 친구가 열렸어요!');
+    }else{
+     tickets++; wr('tickets',tickets); renderMission();
+     if(lockKey&&$('lockDialog').open) openLock(lockKey);
+     toast('교환권 한 장을 받았어요.');
+    }
+   }).catch(()=>toast('인터넷 연결을 확인해 주세요.'));
+ }
+ $('lockCodeBtn').onclick=function(){redeem($('lockCodeIn').value);$('lockCodeIn').value='';};
+ $('lockCodeIn').onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();$('lockCodeBtn').click();}};
+ (function(){const l=document.documentElement.lang;$('lockShop').href='https://pawminute.com/'+(l&&l!=='ko'?l+'/':'')+'#price';})();
+ // 결제 직후 "앱에서 바로 열기"(/app?code=…)로 들어온 경우
+ try{const c=new URLSearchParams(location.search).get('code');if(c&&SHOP)setTimeout(()=>redeem(c),900);}catch(e){}
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){

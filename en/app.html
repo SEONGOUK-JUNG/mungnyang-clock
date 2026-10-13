@@ -258,7 +258,18 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="lock-mission" id="lockMission"></div>
 <div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>Use a ticket</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
+<div class="lock-code" id="lockCodeBox" hidden>
+<a id="lockShop" href="https://pawminute.com/#price" target="_blank" rel="noopener">Buy a friend →</a>
+<div class="lock-code-row"><input id="lockCodeIn" placeholder="Purchase code PAW-XXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="13"><button type="button" class="primary-btn" id="lockCodeBtn">Use code</button></div>
+</div>
 </form></dialog>
+<style>
+.lock-code{margin-top:14px;padding-top:12px;border-top:1px solid rgba(127,127,127,.25)}
+.lock-code a{font-size:13px;text-decoration:none;font-weight:600}
+.lock-code-row{display:flex;gap:8px;margin-top:10px}
+.lock-code-row input{flex:1;min-width:0;font:inherit;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:10px 12px;border-radius:12px;border:1px solid rgba(127,127,127,.35);background:transparent;color:inherit}
+.lock-code-row .primary-btn{white-space:nowrap}
+</style>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <dialog class="modal" id="scheduleDialog" aria-labelledby="scheduleDialogTitle"><form id="scheduleForm"><div class="modal-title"><h2 id="scheduleDialogTitle">Add a promise</h2><button type="button" class="icon-btn" data-close="scheduleDialog" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div><label class="field"><span>Promise name</span><input id="eventName" required maxlength="30" placeholder="e.g. Evening walk"></label><div class="form-grid"><label class="field"><span>Time</span><input type="time" id="eventTime" required></label><label class="field"><span>Kind</span><select id="eventKind"><option value="meal">Meal</option><option value="snack">Treat</option><option value="walk">Walk</option><option value="med">Medicine</option><option value="play">Play</option><option value="bath">Bath</option><option value="vet">Vet</option><option value="etc">Other</option></select></label></div><label class="field"><span>Repeat</span><select id="eventRepeat"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="once">Once only</option></select></label><div class="field" id="weekdayField" hidden><span>Choose weekdays</span><div class="days-select" id="weekdaySelect"></div></div><label class="field" id="eventDateField" hidden><span id="eventDateLabel">Date</span><input type="date" id="eventDate"></label><label class="field" id="eventWhoField"><span>Who takes care of it</span><select id="eventWho"></select></label><div class="modal-actions"><button type="button" class="danger-btn" id="deleteEvent" hidden>Delete</button><button type="button" class="secondary-btn" id="previewEvent">Play it now</button><button type="submit" class="primary-btn">Save</button></div></form></dialog>
 <dialog class="modal" id="profileDialog" aria-labelledby="profileDialogTitle"><form id="profileForm"><div class="modal-title"><h2 id="profileDialogTitle">My pet</h2><button type="button" class="icon-btn" data-close="profileDialog" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="photo-edit"><div class="photo-preview" id="photoPreview"></div><button type="button" class="secondary-btn" id="choosePhoto">Choose a photo</button><input id="photoFile" type="file" accept="image/*" hidden><button type="button" class="text-btn" id="removePhoto">Remove the photo</button></div><label class="field"><span>Name</span><input id="petName" maxlength="12" required placeholder="Koko"></label><label class="field"><span>Birthday <small style="font-weight:400;color:var(--muted)">Choose</small></span><input id="petBirth" type="date"></label><p class="small-note">On birthdays there is a party hat and a little cake.</p><div class="photo-purpose"><strong>Photo and character</strong>The photo you pick here shows in the profile. Automatic AI redrawing of your pet as a character is not part of this file. A finished character drawing can be added to the HTML separately.</div><div class="modal-actions"><button type="submit" class="primary-btn">Save</button></div></form></dialog>
@@ -1871,7 +1882,7 @@ function setSleep(value){sleep=!!value;save('sleep',sleep?'1':'0');applyTheme();
 function setProfile(value){profile={...profile,...value};profile.name=String(profile.name||'Koko').slice(0,12);if(!String(profile.photo||'').startsWith('data:image/'))profile.photo='';save('profile',profile);rebuildPets();}
 const grainEls=[];for(let i=0;i<8;i++){const g=el('g');g.append(el('ellipse',{cx:0,cy:-(20+12*i)+2.4,rx:4.8,ry:3.1,fill:'#684e2f',opacity:.16}),el('ellipse',{cx:0,cy:-(20+12*i),rx:4.6,ry:3.8,fill:['#b5834b','#bd9159','#a87946','#c69b61'][i%4]}),el('path',{d:`M-2 ${-(20+12*i)-1.1}q1.4-1.3 3-.4`,fill:'none',stroke:'#f5d59f','stroke-width':.8,'stroke-linecap':'round',opacity:.65}));$('grains').append(g);grainEls.push(g);}
 function repLabel(s){if(s.rep==='weekly')return (s.days||[]).map(x=>'SMTWTFS'[x]).join('·')+'Weekday';if(s.rep==='monthly')return `Monthly ${Number((s.date||'').slice(-2))||1}`;if(s.rep==='yearly')return `Yearly ${Number((s.date||'').slice(5,7))}/ ${Number((s.date||'').slice(8,10))}`;if(s.rep==='once')return s.date||'Once only';return 'Daily';}
-function timeRemaining(at,now){const m=Math.max(0,Math.ceil((at-now)/60000));return m<1?'In a moment':m<60?`${m} min from now`:`${Math.floor(m/60)}Time${m%60?` ${m%60} min`:''}  later`;}
+function timeRemaining(at,now){const m=Math.max(0,Math.ceil((at-now)/60000));return m<1?'In a moment':m<60?`${m} min from now`:`${Math.floor(m/60)}h${m%60?` ${m%60}m`:``} from now`;}
 function renderSchedule(st){
  const today=engine.todayEvents(),byId=new Map(today.map(e=>[e.schedule.id,e]));
  const schedules=[...st.schedules].sort((a,b)=>(a.time||'').localeCompare(b.time||''));
@@ -2043,7 +2054,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 Records을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(Corgi·Bengal)
- const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // day 15 min · 3이면 교환권 한  photo (day쯤 빠져도 이어 준다)
+ const NEED_MIN=30, NEED_DAYS=7, GRACE=1;      // day 30 min · 7이면 교환권 한  photo (day쯤 빠져도 이어 준다) — 소개 페이지 가격표와 같게 (2026-10-13)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2135,6 +2146,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockMission').innerHTML='<div class="mission-top"><b>Days done '+n+' / '+NEED_DAYS+'</b><span>Today '+today+' min / '+NEED_MIN+' min</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>day '+NEED_MIN+' minutes or more of walking or play, '+NEED_DAYS+' days to earn one ticket. Missing a day is fine — the count carries on.</small>';
+  $('lockCodeBox').hidden=!SHOP;
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='Use a ticket ('+tickets+' photo)';
   $('lockNote').textContent=(tickets>0?'교환권 '+tickets+' photo이 있어요. Once welcomed, they stay with you.':'미션을 Finish내면 교환권을 한  photo 받아요.');
   showDialog('lockDialog');
@@ -2152,6 +2164,38 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+', nice to meet you! You can be together now.');
   setChar(lockKey);
  };
+
+ /* ── 구매 코드: 웹·PC 시계에서만 (아이폰 앱은 애플 Payment 규정 때문에 숨긴다) ──
+    ONE = 교환권 한  photo, ALL = Unlock all. 코드 확인은 pawminute.com/api/redeem (기기 수 제한은 서버가 센다) */
+ const SHOP=!window.ReactNativeWebView;
+ const dev=(function(){let d=rd('dev','');if(!d){d=Math.random().toString(36).slice(2)+Date.now().toString(36);wr('dev',d);}return d;})();
+ const usedCodes=rd('codes',[]);
+ function redeem(code){
+  code=String(code||'').trim().toUpperCase();
+  if(!/^PAW-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)){toast('Please check the purchase code.');return;}
+  if(usedCodes.indexOf(code)>=0){toast('This code is already used here.');return;}
+  fetch('https://pawminute.com/api/redeem',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,dev:dev})})
+   .then(r=>r.json().then(j=>({ok:r.ok,status:r.status,j:j})))
+   .then(function(x){
+    if(!x.ok){toast(x.status===409?'This code was already used on another device.':'Code not found.');return;}
+    usedCodes.push(code); wr('codes',usedCodes);
+    if(x.j.sku==='ALL'){
+     allOpen=1; wr('allunlock',1);
+     renderBreedGrid(); if(typeof renderMemberGrid==='function') renderMemberGrid();
+     try{$('lockDialog').close();}catch(e){}
+     toast('Every friend is unlocked!');
+    }else{
+     tickets++; wr('tickets',tickets); renderMission();
+     if(lockKey&&$('lockDialog').open) openLock(lockKey);
+     toast('You got one friend ticket.');
+    }
+   }).catch(()=>toast('Please check your internet connection.'));
+ }
+ $('lockCodeBtn').onclick=function(){redeem($('lockCodeIn').value);$('lockCodeIn').value='';};
+ $('lockCodeIn').onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();$('lockCodeBtn').click();}};
+ (function(){const l=document.documentElement.lang;$('lockShop').href='https://pawminute.com/'+(l&&l!=='ko'?l+'/':'')+'#price';})();
+ // Payment 직 later "앱에서 바로 열기"(/app?code=…)로 들어온 경우
+ try{const c=new URLSearchParams(location.search).get('code');if(c&&SHOP)setTimeout(()=>redeem(c),900);}catch(e){}
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){

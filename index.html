@@ -173,6 +173,11 @@ footer a:hover{color:var(--ink)}
 .sheet ol b{color:var(--ink);font-weight:600}
 .sheet .close{margin-top:20px;width:100%}
 .sheet .note{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 14px}
+.buy{margin-top:4px;min-height:44px}
+.buy .paypal{width:100%}
+.buy small{display:block;margin-top:6px;color:var(--dim);font-size:11.5px}
+.seller{color:var(--dim);font-size:12px;line-height:1.8;margin-top:10px}
+.code-box{font-family:var(--mono);font-size:22px;letter-spacing:.08em;text-align:center;padding:14px;border:1px dashed var(--kibble);border-radius:12px;margin:12px 0;user-select:all}
 </style>
 </head>
 <body>
@@ -286,26 +291,26 @@ footer a:hover{color:var(--ink)}
       </div>
       <div class="plan">
         <span class="tag">ONE</span>
-        <div class="price">US$4.99 <small>/ 한 친구</small></div>
+        <div class="price">6,500원 <small>/ 한 친구</small></div>
         <p>마음에 드는 친구를 하나 골라 데려옵니다. 한 번 데려오면 계속 함께합니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="buy" data-sku="ONE"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
       </div>
       <div class="plan">
         <span class="tag">ALL</span>
-        <div class="price">US$49.99 <small>/ 전부</small></div>
+        <div class="price">65,000원 <small>/ 전부</small></div>
         <p>79종 전부를 엽니다. 앞으로 더해지는 친구들도 함께 열립니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="buy" data-sku="ALL"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
       </div>
       <div class="plan">
         <span class="tag">CUSTOM</span>
-        <div class="price">US$99 <small>/ 우리 아이</small></div>
+        <div class="price">130,000원 <small>/ 우리 아이</small></div>
         <p>우리 아이 사진을 보내 주시면 그 아이를 캐릭터로 만들어 넣어 드립니다.</p>
-        <button class="btn ghost" type="button" disabled>결제 준비 중</button>
+        <div class="buy" data-sku="CUSTOM"><button class="btn ghost" type="button" disabled>결제 준비 중</button></div>
       </div>
     </div>
     <div class="mission">
       <b>사지 않고 얻는 길</b>
-      <span>하루 <em>30분</em> 이상 산책하거나 놀아 주기를 <em>7일 연속</em> 하면, 새 친구 교환권을 한 장 받습니다.</span>
+      <span>하루 <em>30분</em> 이상 산책하거나 놀아 주기를 <em>7일</em>을 채우면, 새 친구 교환권을 한 장 받습니다. 하루쯤 빠져도 이어집니다.</span>
     </div>
   </div>
 </section>
@@ -329,7 +334,11 @@ footer a:hover{color:var(--ink)}
       <a href="/support">지원</a>
       <a href="#" data-open="howtoSheet">홈 화면에 추가</a>
     </div>
-    <div>© 2026 정성욱 · 멍냥시계</div>
+    <div>© 2026 주식회사 에이브릿지 · 멍냥시계</div>
+  </div>
+  <div class="wrap seller">
+    판매자 주식회사 에이브릿지(ABRIDGE) · 대표 이세아 · 사업자등록번호 689-88-03550 · 통신판매업신고 제2025-광주북구-0992호<br>
+    광주광역시 북구 부남길26번길 21, 1층 · <a href="mailto:ceo@abridge.co.kr">ceo@abridge.co.kr</a>
   </div>
 </footer>
 
@@ -391,6 +400,79 @@ footer a:hover{color:var(--ink)}
   addEventListener('keydown', function(e){
     if (e.key === 'Escape') document.querySelectorAll('.sheet.on').forEach(function(s){ s.classList.remove('on'); });
   });
+})();
+</script>
+<div class="sheet" id="buySheet">
+  <div class="card">
+    <h3 id="buyTitle">결제가 끝났어요</h3>
+    <p class="note" id="buyNote"></p>
+    <div class="code-box" id="buyCode" hidden></div>
+    <a class="btn" id="buyOpen" href="/app" hidden>앱에서 바로 열기</a>
+    <p class="note" id="buyHint"></p>
+    <button class="btn ghost close" type="button" data-close>닫기</button>
+  </div>
+</div>
+
+<script>
+/* 결제: 한국어판은 페이앱 링크, 영문·일본어판은 PayPal (PayPal 은 한국 구매자 결제를 받지 않는다) */
+(function(){
+  var PAYAPP = { ONE: 'https://www.payapp.kr/L/z4maC7', ALL: 'https://www.payapp.kr/L/z4maDF', CUSTOM: 'https://www.payapp.kr/L/z4maG2' };   // 페이앱 결제 링크 (2026-10-13)
+  var lang = location.pathname.indexOf('/ja') === 0 ? 'ja' : location.pathname.indexOf('/en') === 0 ? 'en' : 'ko';
+  var boxes = document.querySelectorAll('.buy[data-sku]');
+  var $ = function(id){ return document.getElementById(id); };
+  var appUrl = lang === 'ko' ? '/app' : '/' + lang + '/app';
+
+  function show(r){
+    $('buyCode').hidden = !r.code; $('buyOpen').hidden = !r.code;
+    if (r.code) {
+      $('buyTitle').textContent = '결제가 끝났어요';
+      $('buyNote').textContent = '아래 구매 코드를 적어 두세요. 이 코드로 친구를 데려옵니다.';
+      $('buyCode').textContent = r.code;
+      $('buyOpen').href = appUrl + '?code=' + encodeURIComponent(r.code);
+      $('buyHint').textContent = (r.sku === 'ALL' ? '모든 친구가 열립니다. 기기 5대까지 같은 코드를 쓸 수 있어요.' : '교환권 한 장이 들어옵니다. 마음에 드는 친구를 골라 데려오세요.')
+        + ' PC 바탕화면 시계에서는 잠긴 친구를 누른 뒤 코드를 넣으면 됩니다.';
+    } else {
+      $('buyTitle').textContent = '주문을 받았어요';
+      $('buyNote').textContent = '주문번호 ' + r.order;
+      $('buyHint').textContent = '우리 아이 사진 몇 장과 이름, 주문번호를 ceo@abridge.co.kr 로 보내 주세요. 만들어지면 메일로 알려 드립니다.';
+    }
+    $('buySheet').classList.add('on');
+    try { localStorage.setItem('mn.lastCode', JSON.stringify(r)); } catch(e){}
+  }
+
+  if (lang === 'ko') {
+    boxes.forEach(function(b){
+      var url = PAYAPP[b.dataset.sku];
+      var tip = b.dataset.sku === 'CUSTOM' ? '결제 후 우리 아이 사진과 이름을 ceo@abridge.co.kr 로 보내 주세요.' : '결제 후 구매 코드를 문자로 보내 드립니다.';
+      if (url) b.innerHTML = '<a class="btn" href="' + url + '" target="_blank" rel="noopener">결제하기</a><small>' + tip + '</small>';
+    });
+    return;
+  }
+
+  fetch('/api/config').then(function(r){ return r.json(); }).then(function(cfg){
+    if (!cfg.clientId) return;
+    var sc = document.createElement('script');
+    sc.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) + '&currency=USD&intent=capture&components=buttons';
+    sc.onload = function(){
+      boxes.forEach(function(b){
+        var sku = b.dataset.sku;
+        b.innerHTML = '<div class="paypal"></div>' + (cfg.env === 'live' ? '' : '<small>테스트 결제(샌드박스)</small>');
+        paypal.Buttons({
+          style: { layout: 'vertical', shape: 'pill', label: 'pay', height: 40 },
+          createOrder: function(){
+            return fetch('/api/paypal/create', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sku: sku }) })
+              .then(function(r){ return r.json(); }).then(function(o){ if (!o.id) throw new Error('create'); return o.id; });
+          },
+          onApprove: function(d){
+            return fetch('/api/paypal/capture', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ orderID: d.orderID }) })
+              .then(function(r){ return r.json(); }).then(function(r){ if (r.error) throw new Error(r.error); show(r); });
+          },
+          onError: function(){ alert('결제를 마치지 못했어요. 잠시 뒤 다시 해 주세요.'); }
+        }).render(b.querySelector('.paypal'));
+      });
+    };
+    document.head.appendChild(sc);
+  }).catch(function(){});
 })();
 </script>
 </body>

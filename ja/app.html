@@ -258,7 +258,18 @@ body.petting .clock-svg #pets{transform:translateY(-2px) scale(1.05)}
 <div class="lock-mission" id="lockMission"></div>
 <div class="lock-buy"><button type="button" class="primary-btn" id="lockTicket" hidden>引換券で迎える</button></div>
 <p class="small-note" id="lockNote" style="margin-top:12px"></p>
+<div class="lock-code" id="lockCodeBox" hidden>
+<a id="lockShop" href="https://pawminute.com/#price" target="_blank" rel="noopener">購入して迎える →</a>
+<div class="lock-code-row"><input id="lockCodeIn" placeholder="購入コード PAW-XXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="13"><button type="button" class="primary-btn" id="lockCodeBtn">コードを使う</button></div>
+</div>
 </form></dialog>
+<style>
+.lock-code{margin-top:14px;padding-top:12px;border-top:1px solid rgba(127,127,127,.25)}
+.lock-code a{font-size:13px;text-decoration:none;font-weight:600}
+.lock-code-row{display:flex;gap:8px;margin-top:10px}
+.lock-code-row input{flex:1;min-width:0;font:inherit;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:10px 12px;border-radius:12px;border:1px solid rgba(127,127,127,.35);background:transparent;color:inherit}
+.lock-code-row .primary-btn{white-space:nowrap}
+</style>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <dialog class="modal" id="scheduleDialog" aria-labelledby="scheduleDialogTitle"><form id="scheduleForm"><div class="modal-title"><h2 id="scheduleDialogTitle">小さな約束を追加</h2><button type="button" class="icon-btn" data-close="scheduleDialog" aria-label="閉じる"><svg class="icon"><use href="#i-close"/></svg></button></div><label class="field"><span>予定の名前</span><input id="eventName" required maxlength="30" placeholder="例）夕方の散歩"></label><div class="form-grid"><label class="field"><span>時間</span><input type="time" id="eventTime" required></label><label class="field"><span>種類</span><select id="eventKind"><option value="meal">ごはん</option><option value="snack">おやつ</option><option value="walk">散歩</option><option value="med">お薬</option><option value="play">遊び</option><option value="bath">お風呂</option><option value="vet">病院</option><option value="etc">そのほか</option></select></label></div><label class="field"><span>繰り返し</span><select id="eventRepeat"><option value="daily">毎日</option><option value="weekly">毎週</option><option value="monthly">毎月</option><option value="yearly">毎年</option><option value="once">一度だけ</option></select></label><div class="field" id="weekdayField" hidden><span>曜日を選ぶ</span><div class="days-select" id="weekdaySelect"></div></div><label class="field" id="eventDateField" hidden><span id="eventDateLabel">日付</span><input type="date" id="eventDate"></label><label class="field" id="eventWhoField"><span>担当する子</span><select id="eventWho"></select></label><div class="modal-actions"><button type="button" class="danger-btn" id="deleteEvent" hidden>削除</button><button type="button" class="secondary-btn" id="previewEvent">いま見せる</button><button type="submit" class="primary-btn">保存</button></div></form></dialog>
 <dialog class="modal" id="profileDialog" aria-labelledby="profileDialogTitle"><form id="profileForm"><div class="modal-title"><h2 id="profileDialogTitle">うちの子</h2><button type="button" class="icon-btn" data-close="profileDialog" aria-label="閉じる"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="photo-edit"><div class="photo-preview" id="photoPreview"></div><button type="button" class="secondary-btn" id="choosePhoto">写真を選ぶ</button><input id="photoFile" type="file" accept="image/*" hidden><button type="button" class="text-btn" id="removePhoto">写真を消す</button></div><label class="field"><span>名前</span><input id="petName" maxlength="12" required placeholder="ココ"></label><label class="field"><span>誕生日 <small style="font-weight:400;color:var(--muted)">選ぶ</small></span><input id="petBirth" type="date"></label><p class="small-note">誕生日には三角帽子と小さなケーキでお祝いします。</p><div class="photo-purpose"><strong>写真とキャラクター</strong>ここで選んだ写真はプロフィールに表示されます。写真の子に似せてキャラクターを自動で描き直すAI機能は、このファイルには入っていません。別に仕上げたキャラクター画像はHTMLに入れて使えます。</div><div class="modal-actions"><button type="submit" class="primary-btn">保存</button></div></form></dialog>
@@ -1871,7 +1882,7 @@ function setSleep(value){sleep=!!value;save('sleep',sleep?'1':'0');applyTheme();
 function setProfile(value){profile={...profile,...value};profile.name=String(profile.name||'ココ').slice(0,12);if(!String(profile.photo||'').startsWith('data:image/'))profile.photo='';save('profile',profile);rebuildPets();}
 const grainEls=[];for(let i=0;i<8;i++){const g=el('g');g.append(el('ellipse',{cx:0,cy:-(20+12*i)+2.4,rx:4.8,ry:3.1,fill:'#684e2f',opacity:.16}),el('ellipse',{cx:0,cy:-(20+12*i),rx:4.6,ry:3.8,fill:['#b5834b','#bd9159','#a87946','#c69b61'][i%4]}),el('path',{d:`M-2 ${-(20+12*i)-1.1}q1.4-1.3 3-.4`,fill:'none',stroke:'#f5d59f','stroke-width':.8,'stroke-linecap':'round',opacity:.65}));$('grains').append(g);grainEls.push(g);}
 function repLabel(s){if(s.rep==='weekly')return (s.days||[]).map(x=>'日月火水木金土'[x]).join('·')+'曜日';if(s.rep==='monthly')return `毎月 ${Number((s.date||'').slice(-2))||1}日`;if(s.rep==='yearly')return `毎年 ${Number((s.date||'').slice(5,7))}/ ${Number((s.date||'').slice(8,10))}日`;if(s.rep==='once')return s.date||'一度だけ';return '毎日';}
-function timeRemaining(at,now){const m=Math.max(0,Math.ceil((at-now)/60000));return m<1?'まもなく':m<60?`${m}分後`:`${Math.floor(m/60)}時間${m%60?` ${m%60}分`:''} 後`;}
+function timeRemaining(at,now){const m=Math.max(0,Math.ceil((at-now)/60000));return m<1?'まもなく':m<60?`${m}分後`:`${Math.floor(m/60)}時間${m%60?` ${m%60}分`:``}後`;}
 function renderSchedule(st){
  const today=engine.todayEvents(),byId=new Map(today.map(e=>[e.schedule.id,e]));
  const schedules=[...st.schedules].sort((a,b)=>(a.time||'').localeCompare(b.time||''));
@@ -2043,7 +2054,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
 /* ── 캐릭터 잠금 · 미션 · 값 ── 처음엔 한 마리, 나머지는 記録을 쌓거나 사서 데려온다 */
 (function(){
  const FREE=['corgi','bengal_new'];            // 처음 고를 수 있는 두 마리(コーギー·ベンガル)
- const NEED_MIN=15, NEED_DAYS=3, GRACE=1;      // 一日 15分 · 3日이면 교환권 한 枚 (一日쯤 빠져도 이어 준다)
+ const NEED_MIN=30, NEED_DAYS=7, GRACE=1;      // 一日 30分 · 7日이면 교환권 한 枚 (一日쯤 빠져도 이어 준다) — 소개 페이지 가격표와 같게 (2026-10-13)
  const rd=(k,d)=>{try{const v=localStorage.getItem('mn.'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
  const wr=(k,v)=>{try{localStorage.setItem('mn.'+k,JSON.stringify(v));}catch(e){}};
  let owned=rd('owned',null), tickets=rd('tickets',0), mins=rd('mins',{}), rewarded=rd('reward',0), allOpen=rd('allunlock',0);
@@ -2135,6 +2146,7 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   $('lockMission').innerHTML='<div class="mission-top"><b>達成 '+n+'日 / '+NEED_DAYS+'日</b><span>今日 '+today+'分 / '+NEED_MIN+'分</span></div>'
    +'<div class="mission-track"><i style="width:'+Math.round(((n%NEED_DAYS)/NEED_DAYS)*100)+'%"></i></div>'
    +'<small>一日 '+NEED_MIN+'分以上の散歩か遊びを '+NEED_DAYS+'日ぶんで交換券が1枚もらえます。1日くらい抜けても続きます。</small>';
+  $('lockCodeBox').hidden=!SHOP;
   const t=$('lockTicket'); t.hidden=tickets<1; t.textContent='引換券で迎える（'+tickets+'枚）';
   $('lockNote').textContent=(tickets>0?'교환권 '+tickets+'枚이 있어요. 一度迎えたら、ずっといっしょです。':'미션을 おわり내면 교환권을 한 枚 받아요.');
   showDialog('lockDialog');
@@ -2152,6 +2164,38 @@ setInterval(renderTimer,1000);renderTimer();renderMy();
   toast(name+'、はじめまして。これからいっしょです。');
   setChar(lockKey);
  };
+
+ /* ── 구매 코드: 웹·PC 시계에서만 (아이폰 앱은 애플 支払い 규정 때문에 숨긴다) ──
+    ONE = 교환권 한 枚, ALL = すべて開く. 코드 확인은 pawminute.com/api/redeem (기기 수 제한은 서버가 센다) */
+ const SHOP=!window.ReactNativeWebView;
+ const dev=(function(){let d=rd('dev','');if(!d){d=Math.random().toString(36).slice(2)+Date.now().toString(36);wr('dev',d);}return d;})();
+ const usedCodes=rd('codes',[]);
+ function redeem(code){
+  code=String(code||'').trim().toUpperCase();
+  if(!/^PAW-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)){toast('購入コードをもう一度確認してください。');return;}
+  if(usedCodes.indexOf(code)>=0){toast('このコードはもう使われています。');return;}
+  fetch('https://pawminute.com/api/redeem',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,dev:dev})})
+   .then(r=>r.json().then(j=>({ok:r.ok,status:r.status,j:j})))
+   .then(function(x){
+    if(!x.ok){toast(x.status===409?'このコードは別の端末で使われています。':'コードが見つかりません。');return;}
+    usedCodes.push(code); wr('codes',usedCodes);
+    if(x.j.sku==='ALL'){
+     allOpen=1; wr('allunlock',1);
+     renderBreedGrid(); if(typeof renderMemberGrid==='function') renderMemberGrid();
+     try{$('lockDialog').close();}catch(e){}
+     toast('すべての友だちが開きました!');
+    }else{
+     tickets++; wr('tickets',tickets); renderMission();
+     if(lockKey&&$('lockDialog').open) openLock(lockKey);
+     toast('引換券を1枚もらいました。');
+    }
+   }).catch(()=>toast('インターネット接続を確認してください。'));
+ }
+ $('lockCodeBtn').onclick=function(){redeem($('lockCodeIn').value);$('lockCodeIn').value='';};
+ $('lockCodeIn').onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();$('lockCodeBtn').click();}};
+ (function(){const l=document.documentElement.lang;$('lockShop').href='https://pawminute.com/'+(l&&l!=='ko'?l+'/':'')+'#price';})();
+ // 支払い 직後 "앱에서 바로 열기"(/app?code=…)로 들어온 경우
+ try{const c=new URLSearchParams(location.search).get('code');if(c&&SHOP)setTimeout(()=>redeem(c),900);}catch(e){}
 
  /* ── 처음 오는 사람: 한 마리 고르기 ── */
  function askStart(){

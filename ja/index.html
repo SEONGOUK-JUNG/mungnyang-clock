@@ -173,6 +173,7 @@ footer a:hover{color:var(--ink)}
 .sheet ol b{color:var(--ink);font-weight:600}
 .sheet .close{margin-top:20px;width:100%}
 .sheet .note{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 14px}
+[hidden]{display:none !important}
 .buy{margin-top:4px;min-height:44px;position:relative;z-index:0;isolation:isolate}
 .buy .paypal{width:100%}
 .buy small{display:block;margin-top:6px;color:var(--dim);font-size:11.5px}
@@ -204,7 +205,8 @@ footer a:hover{color:var(--ink)}
         ごはんの時間には器の前で、散歩の時間には扉の前で待っています。
         スマホでも、パソコンのデスクトップでも、同じ子がいっしょに暮らします。</p>
       <div class="hero-cta">
-        <a class="btn" href="https://apps.apple.com/app/id6814390453">App Storeでダウンロード</a>
+        <a class="btn" id="iosGet" href="https://apps.apple.com/app/id6814390453">App Storeでダウンロード</a>
+        <button class="btn" type="button" id="androidInstall" hidden>Androidにインストール</button>
         <a class="btn ghost" href="/ja/app">アプリを開く</a>
         <button class="btn ghost" type="button" data-open="deskSheet">デスクトップ時計を受け取る</button>
       </div>
@@ -473,6 +475,21 @@ footer a:hover{color:var(--ink)}
     };
     document.head.appendChild(sc);
   }).catch(function(){});
+})();
+</script>
+<script>
+/* 안드로이드: 구글 플레이 없이 このサイトをアプリとしてインストール (크롬의 インストール 창). インストール 창이 안 뜨는 브라우저는 안내 창으로 */
+(function(){
+  if (!/Android/i.test(navigator.userAgent)) return;
+  var btn = document.getElementById('androidInstall'), ios = document.getElementById('iosGet'), ask = null;
+  if (ios) ios.hidden = true;
+  btn.hidden = false;
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ask = e; });
+  addEventListener('appinstalled', function(){ btn.textContent = 'インストールしました・アプリ一覧から開けます'; ask = null; });
+  btn.addEventListener('click', function(){
+    if (ask) { ask.prompt(); ask.userChoice.then(function(){ ask = null; }); }
+    else document.getElementById('howtoSheet').classList.add('on');
+  });
 })();
 </script>
 </body>

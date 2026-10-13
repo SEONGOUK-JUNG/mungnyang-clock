@@ -8,6 +8,9 @@
 <link rel="alternate" hreflang="ko" href="https://pawminute.com/">
 <link rel="alternate" hreflang="en" href="https://pawminute.com/en/">
 <link rel="alternate" hreflang="ja" href="https://pawminute.com/ja/">
+<link rel="alternate" hreflang="zh" href="https://pawminute.com/zh/">
+<link rel="alternate" hreflang="fr" href="https://pawminute.com/fr/">
+<link rel="alternate" hreflang="es" href="https://pawminute.com/es/">
 <link rel="alternate" hreflang="x-default" href="https://pawminute.com/en/">
 <meta property="og:url" content="https://pawminute.com/">
 <meta property="og:locale" content="ko_KR">
@@ -26,7 +29,8 @@ if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) lo
   if (localStorage.getItem('mn.lang')) return;              // 직접 고른 적이 있으면 그대로
   var l = (navigator.language || '').toLowerCase();
   if (l.indexOf('ko') === 0) return;
-  location.replace(l.indexOf('ja') === 0 ? '/ja/' : '/en/');
+  var two = l.slice(0, 2);
+  location.replace(['ja', 'zh', 'fr', 'es'].indexOf(two) >= 0 ? '/' + two + '/' : '/en/');
 }catch(e){} })();
 </script>
 <style>
@@ -190,7 +194,7 @@ footer a:hover{color:var(--ink)}
       <a href="#features">기능</a>
       <a href="#desktop">바탕화면</a>
       <a href="#price">가격</a>
-      <span class="langpick"><a href="/" data-lang="ko">한국어</a><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a></span>
+      <span class="langpick"><a href="/" data-lang="ko">한국어</a><a href="/en/" data-lang="en">EN</a><a href="/ja/" data-lang="ja">日本語</a><a href="/zh/" data-lang="zh">中文</a><a href="/fr/" data-lang="fr">FR</a><a href="/es/" data-lang="es">ES</a></span>
       <a class="btn small" href="/app">앱 열어 보기</a>
     </nav>
   </div>
@@ -388,7 +392,7 @@ footer a:hover{color:var(--ink)}
   if (URL_DESK) { get.href = URL_DESK; get.textContent = '내려받기'; }
   else { get.onclick = function(e){ e.preventDefault(); }; get.setAttribute('aria-disabled','true'); get.style.opacity = '.6'; }
 
-  var here = location.pathname.indexOf('/ja') === 0 ? 'ja' : location.pathname.indexOf('/en') === 0 ? 'en' : 'ko';
+  var here = (location.pathname.match(/^\/(en|ja|zh|fr|es)(\/|$)/) || [0, 'ko'])[1];
   document.querySelectorAll('.langpick a').forEach(function(a){
     if (a.dataset.lang === here) a.setAttribute('aria-current', 'page');
     a.addEventListener('click', function(){ try{ localStorage.setItem('mn.lang', a.dataset.lang); }catch(e){} });
@@ -419,7 +423,7 @@ footer a:hover{color:var(--ink)}
 /* 결제: 한국어판은 페이앱 링크, 영문·일본어판은 PayPal (PayPal 은 한국 구매자 결제를 받지 않는다) */
 (function(){
   var PAYAPP = { ONE: 'https://www.payapp.kr/L/z4maC7', ALL: 'https://www.payapp.kr/L/z4maDF', CUSTOM: 'https://www.payapp.kr/L/z4maG2' };   // 페이앱 결제 링크 (2026-10-13)
-  var lang = location.pathname.indexOf('/ja') === 0 ? 'ja' : location.pathname.indexOf('/en') === 0 ? 'en' : 'ko';
+  var lang = (location.pathname.match(/^\/(en|ja|zh|fr|es)(\/|$)/) || [0, 'ko'])[1];
   var boxes = document.querySelectorAll('.buy[data-sku]');
   var $ = function(id){ return document.getElementById(id); };
   var appUrl = lang === 'ko' ? '/app' : '/' + lang + '/app';
@@ -454,7 +458,7 @@ footer a:hover{color:var(--ink)}
   fetch('/api/config').then(function(r){ return r.json(); }).then(function(cfg){
     if (!cfg.clientId) return;
     var sc = document.createElement('script');
-    sc.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) + '&currency=USD&intent=capture&components=buttons&locale=' + (lang === 'ja' ? 'ja_JP' : 'en_US');   // 버튼 글자를 브라우저가 아니라 페이지 언어로
+    sc.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) + '&currency=USD&intent=capture&components=buttons&locale=' + ({ ja: 'ja_JP', zh: 'zh_CN', fr: 'fr_FR', es: 'es_ES' }[lang] || 'en_US');   // 버튼 글자를 브라우저가 아니라 페이지 언어로
     sc.onload = function(){
       boxes.forEach(function(b){
         var sku = b.dataset.sku;

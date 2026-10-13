@@ -1,0 +1,25 @@
+{
+    "name":  "PawMinute",
+    "short_name":  "PawMinute",
+    "description":  "A pet clock where dogs and cats push kibble to tell the time",
+    "start_url":  "/en/app",
+    "scope":  "/",
+    "display":  "standalone",
+    "orientation":  "portrait",
+    "background_color":  "#f7f6f0",
+    "theme_color":  "#74855d",
+    "lang":  "en",
+    "icons":  [
+                  {
+                      "src":  "/icons/icon-192.png",
+                      "sizes":  "192x192",
+                      "type":  "image/png"
+                  },
+                  {
+                      "src":  "/icons/icon-512.png",
+                      "sizes":  "512x512",
+                      "type":  "image/png",
+                      "purpose":  "any maskable"
+                  }
+              ]
+}
